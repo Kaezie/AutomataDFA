@@ -32,7 +32,7 @@ export const ArrowLoopSm = ({ top, left, rotate }) => {
         translateX="-50%"
         translateY="-50%"
         transform="auto"
-        color="gray.700"
+        color="white.700"
         display={["flex", "flex", "flex", "flex", "flex", "none"]}
       >
         <RiArrowGoForwardLine size="1.3em" />

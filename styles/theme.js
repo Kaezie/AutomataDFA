@@ -9,10 +9,10 @@ export const theme = extendTheme({
         bg: props.colorMode === "dark" ? "gray.800" : "gray.50",
       },
       p: {
-        color: "gray.700",
+        color: "white.700",
       },
       "h1, h2, h3, h4": {
-        color: "gray.700",
+        color: "white.700",
       },
     }),
   },
