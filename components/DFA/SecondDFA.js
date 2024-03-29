@@ -277,7 +277,7 @@ const SecondDFA = ({ currentNodeVal, simulatingStatus }) => {
         animate={currentNodeVal == 1 ? "pulse" : ""}
         whileHover={!simulatingStatus && "scale"}
       >
-        1
+        -
       </Atom>
     </>
   );
