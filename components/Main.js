@@ -6,7 +6,7 @@ import LeftBox from "./components/LeftBox";
 import RightBox from "./components/RightBox";
 
 const Main = () => {
-  const regex1 = "(aba+bab) (a+b)* (bab) (a+b)* (a+b+ab+ba) (a+b)*";
+  const regex1 = "(aba+bab)(a+b)*(bab)(a+b)*(a+b+a+ab+ba)(a+b+aa)*";
   const regex2 = "((101+111+101)+(1+0+11)) (1+0+01)* (111+000+101) (1+0)*";
 
   const [string, setString] = useState("");
