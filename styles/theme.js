@@ -22,12 +22,12 @@ export const theme = extendTheme({
   },
   textStyles: {
     Primary: {
-      color: "blue.300",
+      color: "white.300",
     },
   },
   layerStyles: {
     Primary: {
-      bgColor: "blue.300",
+      bgColor: "white.300",
     },
   },
   components: {
