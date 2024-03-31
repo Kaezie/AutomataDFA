@@ -39,6 +39,10 @@ const SecondDFA = ({ currentNodeVal, simulatingStatus }) => {
       <Text size="label" top="27%" left="80.5%">
         1
       </Text>
+      {/*q8 q8*/}
+      <Text top="45%" left="97.3%" size="label">
+        0,1
+      </Text>
       {/* q7 q8 */}
       <Text size="label" top="45%" left="79%">
         1
@@ -119,6 +123,17 @@ const SecondDFA = ({ currentNodeVal, simulatingStatus }) => {
         top={["27%", null, "29%", null, null, "29%"]}
         left={["84%", null, "82%", null, null, "82%"]}
         rotate={["227", null, "220", null, null, "208"]}
+      />
+      {/*q8 q8*/}
+      <ArrowLoopSm
+        top={["50%", "50%", "50%", null, null, "50%"]}
+        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
+        rotate="180"
+      />
+      <ArrowLoopLg
+        top={["50%", "50%", "50%", null, null, "48.5%"]}
+        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
+        rotate="200"
       />
       {/* q4 q6 */}
       <ArrowBody
