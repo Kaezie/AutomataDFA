@@ -90,7 +90,7 @@ const FirstDFA = ({ currentNode, simulating }) => {
         a,b
       </Text>
       {/*q10 q10*/}
-      <Text top="45%" left="97%" size="label">
+      <Text top="45%" left="97.3%" size="label">
         a,b
       </Text>
       {/* q7 q7 */}
@@ -201,12 +201,12 @@ const FirstDFA = ({ currentNode, simulating }) => {
       {/*q10 q10*/}
       <ArrowLoopSm
         top={["50%", "50%", "50%", null, null, "50%"]}
-        left={["93.9%", "93.9%", "93.9%", null, null, "93%"]}
+        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
         rotate="180"
       />
       <ArrowLoopLg
         top={["50%", "50%", "50%", null, null, "48.5%"]}
-        left={["93.9%", "93.9%", "93.9%", null, null, "93.9%"]}
+        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
         rotate="200"
       />
       {/* q7 q7 */}
