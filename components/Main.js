@@ -194,8 +194,10 @@ const Main = () => {
 
   return (
     <Flex
-      direction={["column", "column", "column", "column", "column", "row"]}
+      direction={["column"]}
       align="center"
+      justify="space-between"
+      height="100vh"
     >
       <RightBox
         prob2={prob2}
@@ -223,6 +225,7 @@ const Main = () => {
         mt="6"
         mb="2"
       />
+      
     </Flex>
   );
 };
