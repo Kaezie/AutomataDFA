@@ -42,8 +42,6 @@ const LeftBox = ({
           <form onSubmit={handleTest}>
             <Flex 
               align="center"
-              direction={["column", "column", "column", "column", "column", "column"]}
-              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
               >
               <Heading>Input String:</Heading>
               <Input
