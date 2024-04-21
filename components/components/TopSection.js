@@ -103,7 +103,6 @@ const LeftBox = ({
               </Tag>
             </Flex>
             <Flex
-              my={2}
               direction={["row", "row", "row", "row", "row", "none"]}
               display={["flex", "flex", "flex", "flex", "flex", "none"]}
               align="center"
