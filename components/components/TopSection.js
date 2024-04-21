@@ -40,8 +40,13 @@ const LeftBox = ({
 
         <Box>
             <Flex>
-              <Heading>Language Accepted:</Heading>
-              <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
+              <Heading
+                w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
+                  Language Accepted:
+              </Heading>
+              <Tag
+                my={1} 
+                fontSize={["0.7em", "0.7em", "0.9em"]}>
                 {!prob2 ? "[a, b]" : "[0, 1]"}
               </Tag>
             </Flex>
