@@ -29,7 +29,7 @@ const LeftBox = ({
   return (
     <>
       <Box
-        w={["40em", "40em", "40em", "40em", "40em", "55em"]}
+        w={["40em", "40em", "40em", "40em", "40em", "52em"]}
         mr={[0, 0, 0, 0, 0, 24]}
       >
         <Flex align="Aflex-end" justify="space-between">
@@ -40,8 +40,20 @@ const LeftBox = ({
 
         <Box>
           <form onSubmit={handleTest}>
-            <Flex align="center">
+            <Flex 
+              align="center"
+              direction={["column", "column", "column", "column", "column", "column"]}
+              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
+              >
               <Heading>Input String:</Heading>
+              <Input
+                maxLength="500"
+                fontSize={["0.7em", "0.7em", "0.9em"]}
+                my={3}
+                placeholder={!prob2 ? "e.g. babbabab" : "e.g. 0110101"}
+                value={string}
+                onChange={handleTextChange}
+              />
               <Flex align="center">
                 {data && (
                   <Button
@@ -65,14 +77,7 @@ const LeftBox = ({
                 )}
               </Flex>
             </Flex>
-            <Input
-              maxLength="500"
-              fontSize={["0.7em", "0.7em", "0.9em"]}
-              my={3}
-              placeholder={!prob2 ? "e.g. babbabab" : "e.g. 0110101"}
-              value={string}
-              onChange={handleTextChange}
-            />
+            
             <Flex justify="space-between" align="center">
               <Flex>
                 <Button type="submit" disabled={simulating}>
