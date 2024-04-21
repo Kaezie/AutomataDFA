@@ -29,7 +29,7 @@ const LeftBox = ({
   return (
     <>
       <Box
-        w={["40em", "40em", "40em", "40em", "40em", "70em"]}
+        w={["40em", "40em", "40em", "40em", "40em", "52em"]}
         mr={[0, 0, 0, 0, 0, 24]}
       >
         <Flex align="Aflex-end" justify="space-between">
@@ -43,7 +43,10 @@ const LeftBox = ({
             <Flex 
               align="center"
               >
-              <Heading>Input String:</Heading>
+              <Heading
+                w={["5em", "5em", "5em", "5em", "5em", "5em"]}>
+                Input String:
+              </Heading>
               <Input
                 maxLength="500"
                 fontSize={["0.7em", "0.7em", "0.9em"]}
