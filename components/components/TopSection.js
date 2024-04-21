@@ -44,7 +44,7 @@ const LeftBox = ({
               align="center"
               >
               <Heading
-                w={["5em", "5em", "5em", "5em", "5em", "5em"]}>
+                w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
                 Input String:
               </Heading>
               <Input
