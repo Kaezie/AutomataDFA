@@ -93,7 +93,7 @@ const LeftBox = ({
             <Divider my="6" />
             <Flex
               align="center"
-              direction={["column", "column", "row", "row", "row", "none"]}
+              direction={["row", "row", "row", "row", "row", "none"]}
               display={["flex", "flex", "flex", "flex", "flex", "none"]}
               // justify="space-between"
             >
@@ -104,7 +104,7 @@ const LeftBox = ({
             </Flex>
             <Flex
               my={2}
-              direction={["column", "column", "row", "row", "row", "none"]}
+              direction={["row", "row", "row", "row", "row", "none"]}
               display={["flex", "flex", "flex", "flex", "flex", "none"]}
               align="center"
             >
