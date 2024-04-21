@@ -80,7 +80,7 @@ const LeftBox = ({
             <Flex justify="space-between" align="center">
               <Flex>
                 <Button type="submit" disabled={simulating}>
-                  Validate
+                  Compile
                 </Button>
                 <Button
                   isLoading={simulating}
