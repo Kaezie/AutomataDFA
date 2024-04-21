@@ -43,6 +43,10 @@ const LeftBox = ({
             <Flex 
               align="center"
               >
+              <Heading>Language Accepted:</Heading>
+              <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
+                {!prob2 ? "[a, b]" : "[0, 1]"}
+              </Tag>
               <Heading
                 w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
                 Input String:
@@ -113,10 +117,6 @@ const LeftBox = ({
               display={["flex", "flex", "flex", "flex", "flex", "flex"]}
               align="center"
             >
-              <Heading>Language Accepted:</Heading>
-              <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
-                {!prob2 ? "[a, b]" : "[0, 1]"}
-              </Tag>
             </Flex>
           </form>
         </Box>
