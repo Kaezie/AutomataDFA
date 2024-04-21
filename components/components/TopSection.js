@@ -30,7 +30,6 @@ const LeftBox = ({
     <>
       <Box
         w={["20em", "20em", "40em", "40em", "40em", "30em"]}
-        h={["10em", "15em", "20em", "25em", "30em", "35em"]}
         mr={[0, 0, 0, 0, 0, 24]}
       >
         <Flex align="Aflex-end" justify="space-between">
