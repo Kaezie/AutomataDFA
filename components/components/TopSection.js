@@ -108,7 +108,6 @@ const LeftBox = ({
               </Text>
             </Flex>
             <Divider my="6" />
-            {/* DIVIDER OF LEFT CONTAINER */}
             <Flex
               align="center"
               direction={["column", "column", "row", "row", "row", "none"]}
