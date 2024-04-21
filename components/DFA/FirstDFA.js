@@ -89,6 +89,10 @@ const FirstDFA = ({ currentNode, simulating }) => {
       <Text top="45%" left="80%" size="label">
         a,b
       </Text>
+      {/*q10 q10*/}
+      <Text top="45%" left="97.3%" size="label">
+        a,b
+      </Text>
       {/* q7 q7 */}
       <Text
         top="19.5%"
@@ -193,6 +197,17 @@ const FirstDFA = ({ currentNode, simulating }) => {
         top={["50%", "50%", "50%", null, null, "51%"]}
         left={["42.5%", "42.5%", "44.4%", null, null, "45.7%"]}
         rotate="20"
+      />
+      {/*q10 q10*/}
+      <ArrowLoopSm
+        top={["50%", "50%", "50%", null, null, "50%"]}
+        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
+        rotate="180"
+      />
+      <ArrowLoopLg
+        top={["50%", "50%", "50%", null, null, "48.5%"]}
+        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
+        rotate="200"
       />
       {/* q7 q7 */}
       <ArrowLoopSm
@@ -299,7 +314,7 @@ const FirstDFA = ({ currentNode, simulating }) => {
         animate={currentNode == 1 ? "pulse" : ""}
         whileHover={!simulating && "scale"}
       >
-        +
+        -
       </Atom>
       <Atom
         variant="q2"
@@ -380,7 +395,7 @@ const FirstDFA = ({ currentNode, simulating }) => {
         animate={currentNode == 10 ? "pulse" : ""}
         whileHover={!simulating && "scale"}
       >
-       -  
+       +  
       </Atom>
       <Atom
         variant="T"
