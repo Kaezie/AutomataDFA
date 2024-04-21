@@ -28,6 +28,17 @@ const RightBox = ({
           justify={["flex-end", null, "flex-end", null, null, "space-between"]}
         >
           <Flex>
+          <Flex
+              align="center"
+              direction={["row", "row", "row", "row", "row", "row"]}
+              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
+              // justify="space-between"
+            >
+              <Heading>Regular Expression:</Heading>
+              <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
+                {!prob2 ? regex1 : regex2}
+              </Tag>
+            </Flex>
             <CFG prob2={prob2} />
             <Button
               disabled={simulating}

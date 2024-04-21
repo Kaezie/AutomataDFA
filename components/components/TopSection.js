@@ -108,23 +108,6 @@ const LeftBox = ({
               </Flex>
             </Flex>
             <Divider my="6" />
-            <Flex
-              align="center"
-              direction={["row", "row", "row", "row", "row", "row"]}
-              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
-              // justify="space-between"
-            >
-              <Heading>Regular Expression:</Heading>
-              <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
-                {!prob2 ? regex1 : regex2}
-              </Tag>
-            </Flex>
-            <Flex
-              direction={["row", "row", "row", "row", "row", "row"]}
-              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
-              align="center"
-            >
-            </Flex>
           </form>
         </Box>
       </Box>
