@@ -31,13 +31,9 @@ const LeftBox = ({
       <Box
         w={["20em", "20em", "40em", "40em", "40em", "30em"]}
         mr={[0, 0, 0, 0, 0, 24]}
-        mt={[14, 14, 16, 16, 16, 0]}
       >
-        <Flex align="flex-end" justify="space-between">
-          <Heading variant="title">DFA Simulator</Heading>
-          <Code fontSize={["0.5em", null, "0.6em", null, null, "0.6em"]}>
-            BETA
-          </Code>
+        <Flex align="Aflex-end" justify="space-between">
+          <Heading variant="title">Group 4</Heading>
         </Flex>
 
         <Divider mb="6" />
@@ -84,7 +80,7 @@ const LeftBox = ({
                 </Button>
                 <Button
                   isLoading={simulating}
-                  loadingText="simulating..."
+                  loadingText="Simulating..."
                   spinnerPlacement="start"
                   onClick={handleSimulation}
                   ml={2}
@@ -92,20 +88,7 @@ const LeftBox = ({
                 >
                   Simulate
                 </Button>
-                <Button
-                  variant="clear"
-                  onClick={handleReset}
-                  disabled={simulating}
-                >
-                  Clear
-                </Button>
               </Flex>
-              <Text
-                fontWeight="semibold"
-                fontSize={["0.7em", "0.7em", "0.9em"]}
-              >
-                Limit: {count}/500
-              </Text>
             </Flex>
             <Divider my="6" />
             <Flex
