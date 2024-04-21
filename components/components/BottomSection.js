@@ -27,7 +27,6 @@ const RightBox = ({
           direction="row"
           justify={["flex-end", null, "flex-end", null, null, "space-between"]}
         >
-          <Flex>
           <Flex
               align="center"
               direction={["row", "row", "row", "row", "row", "row"]}
@@ -39,16 +38,17 @@ const RightBox = ({
                 {!prob2 ? regex1 : regex2}
               </Tag>
             </Flex>
-            <CFG prob2={prob2} />
-            <Button
-              disabled={simulating}
-              onClick={handleSwitch}
-              rightIcon={<CgChevronRight />}
-            >
-              Switch RegEx
-            </Button>
+            <Flex>
+              <CFG prob2={prob2} />
+              <Button
+                disabled={simulating}
+                onClick={handleSwitch}
+                rightIcon={<CgChevronRight />}
+              >
+                Switch RegEx
+              </Button>
+            </Flex>
           </Flex>
-        </Flex>
         <Flex
           h={["12em", null, "18em", null, null, "18em"]}
           pos="relative"
