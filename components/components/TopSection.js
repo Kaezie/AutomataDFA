@@ -39,9 +39,12 @@ const LeftBox = ({
         <Divider mb="6" />
 
         <Box>
-            <Heading>Language Accepted:</Heading> <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
+            <Flex>
+              <Heading>Language Accepted:</Heading>
+              <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
                 {!prob2 ? "[a, b]" : "[0, 1]"}
               </Tag>
+            </Flex>
             <form onSubmit={handleTest}>
             <Flex 
               align="center"
