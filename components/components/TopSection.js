@@ -93,8 +93,8 @@ const LeftBox = ({
             <Divider my="6" />
             <Flex
               align="center"
-              direction={["row", "row", "row", "row", "row", "none"]}
-              display={["flex", "flex", "flex", "flex", "flex", "none"]}
+              direction={["row", "row", "row", "row", "row", "row"]}
+              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
               // justify="space-between"
             >
               <Heading>Regular Expression:</Heading>
@@ -103,8 +103,8 @@ const LeftBox = ({
               </Tag>
             </Flex>
             <Flex
-              direction={["row", "row", "row", "row", "row", "none"]}
-              display={["flex", "flex", "flex", "flex", "flex", "none"]}
+              direction={["row", "row", "row", "row", "row", "row"]}
+              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
               align="center"
             >
               <Heading>Language Accepted:</Heading>
