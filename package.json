@@ -19,7 +19,8 @@
     "react-curved-arrow": "^0.1.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.2.0",
-    "@fontsource/esteban": "^5.0.20"
+    "@fontsource/roboto": "5.0.13",
+    "@fontsource/montserrat": "5.0.18"
   },
   "devDependencies": {
     "typescript": "^5",

@@ -22,8 +22,8 @@ export const theme = extendTheme({
     useSystemColorMode: false,
   },
   fonts:{
-    body:`'Esteban', serif`,
-    heading:`'Esteban', serif`,
+    body:`'Roboto', sans-serif`,
+    heading:`'Motserrat', sans-serif`,
   },
   textStyles: {
     Primary: {
