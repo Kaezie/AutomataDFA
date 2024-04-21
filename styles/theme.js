@@ -24,7 +24,7 @@ export const theme = extendTheme({
   },
   fonts:{
     body:`'Roboto', sans-serif`,
-    heading:`'Motserrat', sans-serif`,
+    heading:`'Montserrat', sans-serif`,
   },
   textStyles: {
     Primary: {
