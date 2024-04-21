@@ -196,17 +196,8 @@ const Main = () => {
     <Flex
       direction={["column"]}
       align="center"
-      justify="space-between"
       height="100vh"
     >
-      <RightBox
-        prob2={prob2}
-        simulating={simulating}
-        regex1={regex1}
-        regex2={regex2}
-        currentNode={currentNode}
-        handleSwitch={handleSwitch}
-      />
       <LeftBox
         handleTest={handleTest}
         data={data}
@@ -219,6 +210,14 @@ const Main = () => {
         count={count}
         regex1={regex1}
         regex2={regex2}
+      />
+      <RightBox
+        prob2={prob2}
+        simulating={simulating}
+        regex1={regex1}
+        regex2={regex2}
+        currentNode={currentNode}
+        handleSwitch={handleSwitch}
       />
       <Divider
         display={["block", null, "block", null, null, "none"]}
