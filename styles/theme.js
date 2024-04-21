@@ -23,6 +23,7 @@ export const theme = extendTheme({
   },
   fonts:{
     body:`'Esteban', serif`,
+    heading:`'Esteban', serif`,
   },
   textStyles: {
     Primary: {
