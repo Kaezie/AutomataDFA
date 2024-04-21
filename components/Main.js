@@ -196,7 +196,6 @@ const Main = () => {
     <Flex
       direction={["column"]}
       align="center"
-      height="100vh"
     >
       <LeftBox
         handleTest={handleTest}
