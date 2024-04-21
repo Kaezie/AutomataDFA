@@ -2,8 +2,8 @@ import { Flex, useToast, Divider } from "@chakra-ui/react";
 import { useState } from "react";
 
 import { DFA, problem1, problem2, language1, language2 } from "./DFA/Logic";
-import LeftBox from "./components/LeftBox";
-import RightBox from "./components/RightBox";
+import TopSection from "./components/TopSection";
+import BottomSection from "./components/BottomSection";
 
 const Main = () => {
   const regex1 = "(aba+bab)(a+b)*(bab)(a+b)*(a+b+a+ab+ba)(a+b+aa)*";
