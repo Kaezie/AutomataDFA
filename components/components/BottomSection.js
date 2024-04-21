@@ -33,7 +33,10 @@ const RightBox = ({
               display={["flex", "flex", "flex", "flex", "flex", "flex"]}
               // justify="space-between"
             >
-              <Heading>Regular Expression:</Heading>
+              <Heading
+                w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
+                Regular Expression:
+              </Heading>
               <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
                 {!prob2 ? regex1 : regex2}
               </Tag>
