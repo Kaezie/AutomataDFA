@@ -197,7 +197,7 @@ const Main = () => {
       direction={["column"]}
       align="center"
     >
-      <LeftBox
+      <TopSection
         handleTest={handleTest}
         data={data}
         prob2={prob2}
@@ -210,7 +210,7 @@ const Main = () => {
         regex1={regex1}
         regex2={regex2}
       />
-      <RightBox
+      <BottomSection
         prob2={prob2}
         simulating={simulating}
         regex1={regex1}
