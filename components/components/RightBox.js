@@ -22,21 +22,6 @@ const RightBox = ({
         w={["20em", null, "40em", null, null, "60em"]}
       >
         <Flex
-          h={["12em", null, "18em", null, null, "18em"]}
-          pos="relative"
-          borderBottom="solid 1px"
-          borderColor="gray.200"
-        >
-          {!prob2 ? (
-            <FirstDFA currentNode={currentNode} simulating={simulating} />
-          ) : (
-            <SecondDFA
-              currentNodeVal={currentNode}
-              simulatingStatus={simulating}
-            />
-          )}
-        </Flex>
-        <Flex
           align="center"
           my="3"
           direction="row"
@@ -55,6 +40,21 @@ const RightBox = ({
               Switch RegEx
             </Button>
           </Flex>
+        </Flex>
+        <Flex
+          h={["12em", null, "18em", null, null, "18em"]}
+          pos="relative"
+          borderBottom="solid 1px"
+          borderColor="gray.200"
+        >
+          {!prob2 ? (
+            <FirstDFA currentNode={currentNode} simulating={simulating} />
+          ) : (
+            <SecondDFA
+              currentNodeVal={currentNode}
+              simulatingStatus={simulating}
+            />
+          )}
         </Flex>
       </Flex>
     </>
