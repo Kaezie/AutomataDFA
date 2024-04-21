@@ -1,7 +1,8 @@
 import { extendTheme } from "@chakra-ui/react";
 import { Button, Heading, Tag, Flex, Input, Text } from "./overrides";
 import { Badge } from "./badgeStyles";
-import '@fontsource/esteban';
+import '@fontsource/montserrat';
+import '@fontsource/roboto';
 
 export const theme = extendTheme({
   styles: {
