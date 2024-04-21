@@ -22,7 +22,6 @@ export const theme = extendTheme({
   },
   textStyles: {
     Primary: {
-      FontFace: "Times New Roman",
       color: "white.300",
     },
   },
