@@ -140,7 +140,7 @@ const Main = () => {
   const handleSimulation = (e) => {
     e.preventDefault();
     handleInputString();
-
+  
     if (!prob2) {
       if (input == "") {
         notInLanguageToast();
@@ -148,33 +148,20 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem1, language1);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-
-        let isTrapped = false;
-
-        for (let i = 0; i < pathWithZeroes.length; i++) {
-          const node = pathWithZeroes[i];
-
-          if (node === "T") {
-            isTrapped = true;
-            break;
-          }
-
+        let isValid = false; // Track if a valid path has been found
+        pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-
-            if (i === pathWithZeroes.length - 2) {
-              if (isTrapped) {
-                handleTrapped();
-              } else {
-                handleValid();
-              }
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos")) {
+              handleValid();
+              isValid = true;
+            } else if (node === "T" && pathWithZeroes.slice(-4)[0] === "T") {
+              handleTrapped();
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T")) {
+              handleShort();
             }
           }, i * 200);
-        }
-
-        if (!isTrapped && pathWithZeroes.length - 1 < input.length) {
-          handleShort();
-        }
+        });
       } else {
         notInLanguageToast();
       }
@@ -185,39 +172,24 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem2, language2);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-
-        let isTrapped = false;
-
-        for (let i = 0; i < pathWithZeroes.length; i++) {
-          const node = pathWithZeroes[i];
-
-          if (node === "T") {
-            isTrapped = true;
-            break;
-          }
-
+        let isValid = false; // Track if a valid path has been found
+        pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-
-            if (i === pathWithZeroes.length - 2) {
-              if (isTrapped) {
-                handleTrapped();
-              } else {
-                handleValid();
-              }
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos")) {
+              handleValid();
+              isValid = true;
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node) {
+              handleShort();
             }
           }, i * 200);
-        }
-
-        if (!isTrapped && pathWithZeroes.length - 1 < input.length) {
-          handleShort();
-        }
+        });
       } else {
         notInLanguageToast();
       }
     }
   };
- 
+
   return (
     <Flex
       direction={["column"]}
