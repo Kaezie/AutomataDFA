@@ -21,7 +21,6 @@ export class DFA {
     this.currentInputPos += 1;
     if (this.currentInputPos == "T") {
       this.result = "Invalid";
-      this.path.push("eos");
       // console.log("Invalid String TRAP");
       // console.log("Path Taken:", this.path);
     } else {
