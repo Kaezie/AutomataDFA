@@ -152,14 +152,14 @@ const Main = () => {
         pathWithZeroes.some((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-            node == pathWithZeroes[pathWithZeroes.length - 2] &&
+            !isValid && node == pathWithZeroes[pathWithZeroes.length - 2] &&
             !pathWithZeroes.includes("T") &&
-            !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2
+            !pathWithZeroes.includes("eos")
               ? handleValid()
-              : node == "T" && pathWithZeroes.slice(-4)[0] == "T"
+              : isValid && node == "T" && pathWithZeroes.slice(-4)[0] == "T"
               ? handleTrapped()
               : pathWithZeroes.slice(-4)[3 - 1] == node &&
-                !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2 && 
+                !pathWithZeroes.includes("T") &&
                 handleShort();
           }, i * 200);
         });
