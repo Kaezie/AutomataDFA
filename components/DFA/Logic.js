@@ -21,6 +21,7 @@ export class DFA {
     this.currentInputPos += 1;
     if (this.currentInputPos == "T") {
       this.result = "Invalid";
+      
       // console.log("Invalid String TRAP");
       // console.log("Path Taken:", this.path);
     } else {
@@ -49,6 +50,7 @@ export class DFA {
           this.currentNode != undefined && this.path.push(this.currentNode);
         } else {
           this.currentNode = "T";
+          this.result = "Invalid";
           // console.log(
           //   "String contains a letter not in the language - ",
           //   this.language
