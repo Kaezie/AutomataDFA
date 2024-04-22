@@ -21,33 +21,36 @@ export class DFA {
     this.currentInputPos += 1;
     if (this.currentInputPos === this.input.length) {
         // All characters in the input string have been read
-        if (this.currentNode === this.problem.length) {
-            // If the DFA is in the last node, the string is valid
+        if (this.currentNode === this.problem.length || this.problem[this.currentNode - 1].nodeNumber === "T") {
+            // If the DFA is in the last node or a trap state, the string is valid
             this.result = "Valid";
         } else {
-            // If the DFA is not in the last node, the string is too short
+            // If the DFA is not in the last node or a trap state, the string is too short
             this.result = "Invalid";
         }
-    } else if (this.currentInputPos === "T") {
-        // If the current input is "T", the string is invalid
+    } else if (this.currentNode === "T") {
+        // If the current node is a trap state, the string is invalid
         this.result = "Invalid";
     } else {
         // Process the input character
-        if (this.currentNode < this.problem.length &&
+        if (this.currentNode <= this.problem.length &&
             this.input[this.currentInputPos] !== undefined) {
             let node = this.problem[this.currentNode - 1];
             if (this.language.includes(this.input[this.currentInputPos])) {
                 this.currentNode = node.direction[this.language.indexOf(this.input[this.currentInputPos])];
                 this.currentNode !== undefined && this.path.push(this.currentNode);
             } else {
-                // If the input character is not in the language, the string is invalid
+                // If the input character is not in the language, move to the trap state
                 this.currentNode = "T";
             }
         }
     }
     // Continue recursively until all characters in the string are processed
-    this.node();  
-  } 
+    if (this.result === undefined) {
+        this.node();
+    }
+}
+
 }
 
 export const problem1 = [
