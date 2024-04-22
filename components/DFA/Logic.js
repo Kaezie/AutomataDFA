@@ -82,7 +82,6 @@ export const problem1 = [
   new Node(8, 6, 9),
   new Node(9, 10, 10),
   new Node(10, 10, 10),
-  new Node("T",10,10)
 ];
 
 export const problem2 = [
