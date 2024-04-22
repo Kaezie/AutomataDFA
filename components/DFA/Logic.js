@@ -60,8 +60,6 @@ export class DFA {
           this.result = "Valid";
           // console.log("Valid String");
           // console.log("Path Taken", this.path);
-        } else if(this.currentNode = "T"){
-          this.result = "Invalid";
         } else {
           this.result = "Invalid";
           // console.log("Invalid String SHORT");
