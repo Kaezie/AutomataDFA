@@ -140,59 +140,52 @@ const Main = () => {
   const handleSimulation = (e) => {
     e.preventDefault();
     handleInputString();
-
+  
     if (!prob2) {
       if (input == "") {
         notInLanguageToast();
-        // console.log("No valid configuration for input string/empty");
       } else if (input.includes("a") || input.includes("b")) {
         setSimulating(true);
-        // console.log("PROB1");
         results = new DFA(input, problem1, language1);
-        // console.log(results);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-        // console.log(pathWithZeroes);
-        pathWithZeroes.some((node, i) => {
+        let isValid = false; // Track if a valid path has been found
+        pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-            node == pathWithZeroes[pathWithZeroes.length - 2] &&
-            !pathWithZeroes.includes("T") &&
-            !pathWithZeroes.includes("eos")
-              ? handleValid()
-              : node == "T" && pathWithZeroes.slice(-4)[0] == "T"
-              ? handleTrapped()
-              : pathWithZeroes.slice(-4)[3 - 1] == node &&
-                !pathWithZeroes.includes("T") &&
-                handleShort();
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos")) {
+              handleValid();
+              isValid = true;
+            } else if (node === "T" && pathWithZeroes.slice(-4)[0] === "T") {
+              handleTrapped();
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T")) {
+              handleShort();
+            }
           }, i * 200);
         });
       } else {
         notInLanguageToast();
-        // console.log("No valid configuration for input string!!");
       }
     } else {
       if (input == "") {
         notInLanguageToast();
-        // console.log("No valid configuration for input string/empty");
       } else if (input.includes("0") || input.includes("1")) {
         setSimulating(true);
-        // console.log("PROB2");
         results = new DFA(input, problem2, language2);
-        // console.log(results);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-        // console.log(pathWithZeroes);
-        pathWithZeroes.some((node, i) => {
+        let isValid = false; // Track if a valid path has been found
+        pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-            node == pathWithZeroes[pathWithZeroes.length - 2] &&
-            !pathWithZeroes.includes("eos")
-              ? handleValid()
-              : pathWithZeroes.slice(-4)[3 - 1] == node && handleShort();
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos")) {
+              handleValid();
+              isValid = true;
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node) {
+              handleShort();
+            }
           }, i * 200);
         });
       } else {
         notInLanguageToast();
-        // console.log("No valid configuration for input string!!");
       }
     }
   };
