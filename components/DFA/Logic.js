@@ -19,17 +19,16 @@ export class DFA {
   }
   node() {
     this.currentInputPos += 1;
-    if (this.currentInputPos == "T") {
+    if (this.currentNode === "T") {
       this.result = "Invalid";
+      // Handle trap state
       // console.log("Invalid String TRAP");
       // console.log("Path Taken:", this.path);
     } else {
-      if (
-        this.input[this.currentInputPos] != undefined
-      ) {
+      if (this.currentInputPos < this.input.length) {
         let node = this.problem[this.currentNode - 1];
         // console.log(this.path, this.input[this.currentInputPos]);
-
+  
         if (
           this.input[this.currentInputPos] == "a" ||
           this.input[this.currentInputPos] == "b" ||
@@ -56,19 +55,21 @@ export class DFA {
         }
         this.node();
       } else {
-        if (this.currentNode == this.problem.length) {
+        if (this.currentNode === this.problem.length) {
           this.result = "Valid";
+          // Handle valid string
           // console.log("Valid String");
           // console.log("Path Taken", this.path);
         } else {
           this.result = "Invalid";
+          // Handle invalid string
           // console.log("Invalid String SHORT");
           this.path.push("eos");
           // console.log("Path Taken", this.path);
         }
       }
     }
-  }
+  }  
 }
 
 export const problem1 = [
