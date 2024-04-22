@@ -152,16 +152,15 @@ const Main = () => {
         pathWithZeroes.some((node, i) => {
           setTimeout(() => {
               setCurrentNode(node);
-              if (node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
-                  handleValid();
-              } else if (node === "T" && pathWithZeroes.slice(-4)[0] === "T") {
-                  handleTrapped();
-              }
+              node == pathWithZeroes[pathWithZeroes.length - 2] &&
+              !pathWithZeroes.includes("T") &&
+              !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2
+                  ? handleValid()
+                  : node == "T" && pathWithZeroes.slice(-4)[0] == "T"
+                  ? handleTrapped()
+                  : null;
           }, i * 200);
       });
-      if (pathWithZeroes.slice(-4)[3 - 1] === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T")) {
-          handleShort();
-      }
       } else {
         notInLanguageToast();
       }
