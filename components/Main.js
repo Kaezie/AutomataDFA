@@ -140,7 +140,7 @@ const Main = () => {
   const handleSimulation = (e) => {
     e.preventDefault();
     handleInputString();
-  
+
     if (!prob2) {
       if (input == "") {
         notInLanguageToast();
@@ -148,33 +148,32 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem1, language1);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-  
-        let isTrapped = false; // Track if the trap state has been encountered
-  
+
+        let isTrapped = false;
+
         for (let i = 0; i < pathWithZeroes.length; i++) {
           const node = pathWithZeroes[i];
-  
+
           if (node === "T") {
             isTrapped = true;
-            handleTrapped();
-            break; // Stop simulation immediately upon encountering the trap state
+            break;
           }
-  
+
           setTimeout(() => {
             setCurrentNode(node);
-  
+
             if (i === pathWithZeroes.length - 2) {
               if (isTrapped) {
-                handleTrapped(); // Display trapped toast message if trapped
+                handleTrapped();
               } else {
-                handleValid(); // Display valid toast message if reached end without trap
+                handleValid();
               }
             }
           }, i * 200);
         }
-  
+
         if (!isTrapped && pathWithZeroes.length - 1 < input.length) {
-          handleShort(); // Display short toast message if input is too short
+          handleShort();
         }
       } else {
         notInLanguageToast();
@@ -186,33 +185,32 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem2, language2);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-  
-        let isTrapped = false; // Track if the trap state has been encountered
-  
+
+        let isTrapped = false;
+
         for (let i = 0; i < pathWithZeroes.length; i++) {
           const node = pathWithZeroes[i];
-  
+
           if (node === "T") {
             isTrapped = true;
-            handleTrapped();
-            break; // Stop simulation immediately upon encountering the trap state
+            break;
           }
-  
+
           setTimeout(() => {
             setCurrentNode(node);
-  
+
             if (i === pathWithZeroes.length - 2) {
               if (isTrapped) {
-                handleTrapped(); // Display trapped toast message if trapped
+                handleTrapped();
               } else {
-                handleValid(); // Display valid toast message if reached end without trap
+                handleValid();
               }
             }
           }, i * 200);
         }
-  
+
         if (!isTrapped && pathWithZeroes.length - 1 < input.length) {
-          handleShort(); // Display short toast message if input is too short
+          handleShort();
         }
       } else {
         notInLanguageToast();
