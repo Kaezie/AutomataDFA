@@ -150,18 +150,19 @@ const Main = () => {
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
         let isTrapped = false; // Track if the trap state has been encountered
-        
+  
         for (let i = 0; i < pathWithZeroes.length; i++) {
           const node = pathWithZeroes[i];
-          
+  
           if (node === "T") {
             isTrapped = true;
+            handleTrapped();
             break; // Stop simulation immediately upon encountering the trap state
           }
-          
+  
           setTimeout(() => {
             setCurrentNode(node);
-            
+  
             if (i === pathWithZeroes.length - 2) {
               if (isTrapped) {
                 handleTrapped(); // Display trapped toast message if trapped
@@ -170,6 +171,10 @@ const Main = () => {
               }
             }
           }, i * 200);
+        }
+  
+        if (pathWithZeroes.length - 1 < input.length) {
+          handleShort(); // Display short toast message if input is too short
         }
       } else {
         notInLanguageToast();
@@ -183,18 +188,19 @@ const Main = () => {
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
         let isTrapped = false; // Track if the trap state has been encountered
-        
+  
         for (let i = 0; i < pathWithZeroes.length; i++) {
           const node = pathWithZeroes[i];
-          
+  
           if (node === "T") {
             isTrapped = true;
+            handleTrapped();
             break; // Stop simulation immediately upon encountering the trap state
           }
-          
+  
           setTimeout(() => {
             setCurrentNode(node);
-            
+  
             if (i === pathWithZeroes.length - 2) {
               if (isTrapped) {
                 handleTrapped(); // Display trapped toast message if trapped
@@ -204,11 +210,16 @@ const Main = () => {
             }
           }, i * 200);
         }
+  
+        if (pathWithZeroes.length - 1 < input.length) {
+          handleShort(); // Display short toast message if input is too short
+        }
       } else {
         notInLanguageToast();
       }
     }
   };
+  
    
 
   return (
