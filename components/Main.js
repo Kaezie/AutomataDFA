@@ -152,12 +152,12 @@ const Main = () => {
         pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos")) {
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
               handleValid();
               isValid = true;
             } else if (node === "T" && pathWithZeroes.slice(-4)[0] === "T") {
               handleTrapped();
-            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T")) {
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
               handleShort();
             }
           }, i * 200);
@@ -176,10 +176,10 @@ const Main = () => {
         pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos")) {
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
               handleValid();
               isValid = true;
-            } else if (pathWithZeroes.slice(-4)[3 - 1] === node) {
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && i === pathWithZeroes.length - 2) {
               handleShort();
             }
           }, i * 200);
