@@ -148,7 +148,7 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem1, language1);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-        let isValid = false; // Track if a valid path has been found
+  
         let isTrapped = false; // Track if the trap state has been encountered
   
         for (let i = 0; i < pathWithZeroes.length; i++) {
@@ -173,7 +173,7 @@ const Main = () => {
           }, i * 200);
         }
   
-        if (pathWithZeroes.length - 1 < input.length) {
+        if (!isTrapped && pathWithZeroes.length - 1 < input.length) {
           handleShort(); // Display short toast message if input is too short
         }
       } else {
@@ -186,7 +186,7 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem2, language2);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-        let isValid = false; // Track if a valid path has been found
+  
         let isTrapped = false; // Track if the trap state has been encountered
   
         for (let i = 0; i < pathWithZeroes.length; i++) {
@@ -211,7 +211,7 @@ const Main = () => {
           }, i * 200);
         }
   
-        if (pathWithZeroes.length - 1 < input.length) {
+        if (!isTrapped && pathWithZeroes.length - 1 < input.length) {
           handleShort(); // Display short toast message if input is too short
         }
       } else {
@@ -219,9 +219,7 @@ const Main = () => {
       }
     }
   };
-  
-   
-
+ 
   return (
     <Flex
       direction={["column"]}
