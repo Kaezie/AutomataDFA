@@ -150,7 +150,7 @@ const Main = () => {
             if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos")) {
               handleValid();
               isValid = true;
-            } else if (node == "T" && pathWithZeroes.slice(-4)[0] === "T") {
+            } else if (node == "T" && pathWithZeroes.slice(-4)[0] == "T") {
               handleTrapped();
             } else if (pathWithZeroes.slice(-4)[3 - 1] == node && !pathWithZeroes.includes("T")) {
               handleShort();
