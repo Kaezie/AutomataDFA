@@ -160,6 +160,10 @@ const Main = () => {
             } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
               handleShort();
             }
+            // Stop simulation if trap state reached
+            if (node === "T") {
+              setSimulating(false);
+            }
           }, i * 200);
         });
       } else {
