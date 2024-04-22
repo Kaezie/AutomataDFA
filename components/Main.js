@@ -154,18 +154,20 @@ const Main = () => {
           const node = pathWithZeroes[i];
           if (node === "T") {
             isTrapped = true;
-            handleTrapped();
             break; // Break the loop when the trap state is encountered
           }
           setTimeout(() => {
             setCurrentNode(node);
-            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
+            if (!isTrapped && !isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
               handleValid();
               isValid = true;
-            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
+            } else if (!isTrapped && pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
               handleShort();
             }
           }, i * 200);
+        }
+        if (isTrapped) {
+          handleTrapped(); // Display trapped toast message if trapped state is encountered
         }
       } else {
         notInLanguageToast();
@@ -183,18 +185,20 @@ const Main = () => {
           const node = pathWithZeroes[i];
           if (node === "T") {
             isTrapped = true;
-            handleTrapped();
             break; // Break the loop when the trap state is encountered
           }
           setTimeout(() => {
             setCurrentNode(node);
-            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
+            if (!isTrapped && !isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
               handleValid();
               isValid = true;
-            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && i === pathWithZeroes.length - 2) {
+            } else if (!isTrapped && pathWithZeroes.slice(-4)[3 - 1] === node && i === pathWithZeroes.length - 2) {
               handleShort();
             }
           }, i * 200);
+        }
+        if (isTrapped) {
+          handleTrapped(); // Display trapped toast message if trapped state is encountered
         }
       } else {
         notInLanguageToast();
