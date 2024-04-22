@@ -150,24 +150,23 @@ const Main = () => {
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
         let isTrapped = false; // Track if the trap state has been encountered
-        pathWithZeroes.some((node, i) => {
+        for (let i = 0; i < pathWithZeroes.length; i++) {
+          const node = pathWithZeroes[i];
           if (node === "T") {
             isTrapped = true;
-            return true; // Break the loop when the trap state is encountered
+            handleTrapped();
+            break; // Break the loop when the trap state is encountered
           }
           setTimeout(() => {
             setCurrentNode(node);
             if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
               handleValid();
               isValid = true;
-            } else if (isTrapped) {
-              handleTrapped();
             } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
               handleShort();
             }
           }, i * 200);
-          return false;
-        });
+        }
       } else {
         notInLanguageToast();
       }
@@ -180,24 +179,23 @@ const Main = () => {
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
         let isTrapped = false; // Track if the trap state has been encountered
-        pathWithZeroes.some((node, i) => {
+        for (let i = 0; i < pathWithZeroes.length; i++) {
+          const node = pathWithZeroes[i];
           if (node === "T") {
             isTrapped = true;
-            return true; // Break the loop when the trap state is encountered
+            handleTrapped();
+            break; // Break the loop when the trap state is encountered
           }
           setTimeout(() => {
             setCurrentNode(node);
             if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
               handleValid();
               isValid = true;
-            } else if (isTrapped) {
-              handleTrapped();
             } else if (pathWithZeroes.slice(-4)[3 - 1] === node && i === pathWithZeroes.length - 2) {
               handleShort();
             }
           }, i * 200);
-          return false;
-        });
+        }
       } else {
         notInLanguageToast();
       }
