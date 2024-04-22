@@ -16,6 +16,7 @@ const Main = () => {
   const [prob2, setProb2] = useState(false);
   const [currentNode, setCurrentNode] = useState(0);
   const [simulating, setSimulating] = useState(false);
+  const [simulationCompleted, setSimulationCompleted] = useState(false);
 
   const validString = useToast();
   const trapString = useToast();
@@ -81,18 +82,21 @@ const Main = () => {
     setSimulating(false);
     validToast();
     setData(results);
+    setSimulationCompleted(true);
   };
   const handleTrapped = () => {
-    console.log("DONE TRAPPED");
+    // console.log("DONE TRAPPED");
     setSimulating(false);
     trapToast();
     setData(results);
+    setSimulationCompleted(true);
   };
   const handleShort = () => {
     // console.log("DONE SHORT");
     setSimulating(false);
     shortToast();
     setData(results);
+    setSimulationCompleted(true);
   };
 
   const handleInputString = () => {
@@ -130,6 +134,7 @@ const Main = () => {
         // console.log("No valid configuration for input string!!");
       }
     }
+    setSimulationCompleted(false);
   };
 
   const handleSimulation = (e) => {
@@ -144,19 +149,20 @@ const Main = () => {
         results = new DFA(input, problem1, language1);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
-        pathWithZeroes.forEach((node, i) => {
+        pathWithZeroes.some((node, i) => {
           setTimeout(() => {
-            setCurrentNode(node);
-            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos")  && i === pathWithZeroes.length - 2) {
-              handleValid();
-              isValid = true;
-            } else if (node == "T") {
-              handleTrapped();
-            } else if (pathWithZeroes.slice(-4)[3 - 1] == node && !pathWithZeroes.includes("T")) {
-              handleShort();
-            }
+              setCurrentNode(node);
+              node == pathWithZeroes[pathWithZeroes.length - 2] &&
+              !pathWithZeroes.includes("T") &&
+              !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2
+                  ? handleValid()
+                  : node == "T" && pathWithZeroes.slice(-4)[0] == "T" && i === pathWithZeroes.length - 2
+                  ? handleTrapped()
+                  : pathWithZeroes.slice(-4)[3 - 1] == node &&
+                  !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2 && 
+                  handleShort();
           }, i * 200);
-        });
+      });
       } else {
         notInLanguageToast();
       }
