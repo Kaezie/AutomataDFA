@@ -150,24 +150,26 @@ const Main = () => {
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
         let isTrapped = false; // Track if the trap state has been encountered
+        
         for (let i = 0; i < pathWithZeroes.length; i++) {
           const node = pathWithZeroes[i];
+          
           if (node === "T") {
             isTrapped = true;
-            break; // Break the loop when the trap state is encountered
+            break; // Stop simulation immediately upon encountering the trap state
           }
+          
           setTimeout(() => {
             setCurrentNode(node);
-            if (!isTrapped && !isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
-              handleValid();
-              isValid = true;
-            } else if (!isTrapped && pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
-              handleShort();
+            
+            if (i === pathWithZeroes.length - 2) {
+              if (isTrapped) {
+                handleTrapped(); // Display trapped toast message if trapped
+              } else {
+                handleValid(); // Display valid toast message if reached end without trap
+              }
             }
           }, i * 200);
-        }
-        if (isTrapped) {
-          handleTrapped(); // Display trapped toast message if trapped state is encountered
         }
       } else {
         notInLanguageToast();
@@ -181,30 +183,33 @@ const Main = () => {
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
         let isTrapped = false; // Track if the trap state has been encountered
+        
         for (let i = 0; i < pathWithZeroes.length; i++) {
           const node = pathWithZeroes[i];
+          
           if (node === "T") {
             isTrapped = true;
-            break; // Break the loop when the trap state is encountered
+            break; // Stop simulation immediately upon encountering the trap state
           }
+          
           setTimeout(() => {
             setCurrentNode(node);
-            if (!isTrapped && !isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
-              handleValid();
-              isValid = true;
-            } else if (!isTrapped && pathWithZeroes.slice(-4)[3 - 1] === node && i === pathWithZeroes.length - 2) {
-              handleShort();
+            
+            if (i === pathWithZeroes.length - 2) {
+              if (isTrapped) {
+                handleTrapped(); // Display trapped toast message if trapped
+              } else {
+                handleValid(); // Display valid toast message if reached end without trap
+              }
             }
           }, i * 200);
-        }
-        if (isTrapped) {
-          handleTrapped(); // Display trapped toast message if trapped state is encountered
         }
       } else {
         notInLanguageToast();
       }
     }
-  };  
+  };
+   
 
   return (
     <Flex
