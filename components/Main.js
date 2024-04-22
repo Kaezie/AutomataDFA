@@ -149,20 +149,19 @@ const Main = () => {
         results = new DFA(input, problem1, language1);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
-        pathWithZeroes.some((node, i) => {
+        pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
-              setCurrentNode(node);
-              node == pathWithZeroes[pathWithZeroes.length - 2] &&
-              !pathWithZeroes.includes("T") &&
-              !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2
-                  ? handleValid()
-                  : node == "T" && pathWithZeroes.slice(-4)[0] == "T" && i === pathWithZeroes.length - 2
-                  ? handleTrapped()
-                  : pathWithZeroes.slice(-4)[3 - 1] == node &&
-                  !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2 && 
-                  handleShort();
+            setCurrentNode(node);
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
+              handleValid();
+              isValid = true;
+            } else if (node === "T" && pathWithZeroes.slice(-4)[0] === "T") {
+              handleTrapped();
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
+              handleShort();
+            }
           }, i * 200);
-      });
+        });
       } else {
         notInLanguageToast();
       }
@@ -174,6 +173,7 @@ const Main = () => {
         results = new DFA(input, problem2, language2);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
+        let trapReached = false; // Track if trap state has been reached
         pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
