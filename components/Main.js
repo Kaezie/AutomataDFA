@@ -159,7 +159,7 @@ const Main = () => {
                   : node == "T" && pathWithZeroes.slice(-4)[0] == "T"
                   ? handleTrapped()
                   : pathWithZeroes.slice(-4)[3 - 1] == node &&
-                  !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2 && 
+                  !pathWithZeroes.includes("T")
                   handleShort();
           }, i * 200);
       });
