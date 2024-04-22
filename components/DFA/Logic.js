@@ -46,11 +46,10 @@ export class DFA {
         }
     }
     // Continue recursively until all characters in the string are processed
-    if (this.result === undefined) {
+    if (this.result === undefined && this.currentInputPos < this.input.length) {
         this.node();
     }
-}
-
+  }
 }
 
 export const problem1 = [
