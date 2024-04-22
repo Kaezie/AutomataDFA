@@ -19,35 +19,54 @@ export class DFA {
   }
   node() {
     this.currentInputPos += 1;
-    if (this.currentInputPos === this.input.length) {
-        // All characters in the input string have been read
-        if (this.currentNode === this.problem.length || this.problem[this.currentNode - 1].nodeNumber === "T") {
-            // If the DFA is in the last node or a trap state, the string is valid
-            this.result = "Valid";
-        } else {
-            // If the DFA is not in the last node or a trap state, the string is too short
-            this.result = "Invalid";
-        }
-    } else if (this.currentNode === "T") {
-        // If the current node is a trap state, the string is invalid
-        this.result = "Invalid";
+    if (this.currentInputPos == "T") {
+      this.result = "Invalid";
+      // console.log("Invalid String TRAP");
+      // console.log("Path Taken:", this.path);
     } else {
-        // Process the input character
-        if (this.currentNode <= this.problem.length &&
-            this.input[this.currentInputPos] !== undefined) {
-            let node = this.problem[this.currentNode - 1];
-            if (this.language.includes(this.input[this.currentInputPos])) {
-                this.currentNode = node.direction[this.language.indexOf(this.input[this.currentInputPos])];
-                this.currentNode !== undefined && this.path.push(this.currentNode);
-            } else {
-                // If the input character is not in the language, move to the trap state
-                this.currentNode = "T";
-            }
+      if (
+        this.input[this.currentInputPos] != undefined
+      ) {
+        let node = this.problem[this.currentNode - 1];
+        // console.log(this.path, this.input[this.currentInputPos]);
+
+        if (
+          this.input[this.currentInputPos] == "a" ||
+          this.input[this.currentInputPos] == "b" ||
+          this.input[this.currentInputPos] == "0" ||
+          this.input[this.currentInputPos] == "1"
+        ) {
+          this.currentNode =
+            node.direction[
+              this.language.indexOf(this.input[this.currentInputPos])
+            ];
+          // console.log(`currentNode: ${this.currentNode}`);
+          // console.log(
+          //   `node.direction[]: ${this.language.indexOf(
+          //     this.input[this.currentInputPos]
+          //   )}`
+          // );
+          this.currentNode != undefined && this.path.push(this.currentNode);
+        } else {
+          this.currentNode = "T";
+          // console.log(
+          //   "String contains a letter not in the language - ",
+          //   this.language
+          // );
         }
-    }
-    // Continue recursively until all characters in the string are processed
-    if (this.result === undefined && this.currentInputPos < this.input.length) {
         this.node();
+      } else {
+        if (this.currentNode == this.problem.length) {
+          this.result = "Valid";
+          // console.log("Valid String");
+          // console.log("Path Taken", this.path);
+        } else {
+          this.result = "Invalid";
+          // console.log("Invalid String SHORT");
+          this.path.push("eos");
+          // console.log("Path Taken", this.path);
+        }
+      }
     }
   }
 }
