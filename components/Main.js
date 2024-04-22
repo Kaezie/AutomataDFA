@@ -149,18 +149,20 @@ const Main = () => {
         results = new DFA(input, problem1, language1);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
         let isValid = false; // Track if a valid path has been found
-        pathWithZeroes.some((node, i) => {
+        pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
-            !isValid && node == pathWithZeroes[pathWithZeroes.length - 2] &&
-            !pathWithZeroes.includes("T") &&
-            !pathWithZeroes.includes("eos")
-              ? handleValid()
-              : isValid && node == "T" && pathWithZeroes.slice(-4)[0] == "T"
-              ? handleTrapped()
-              : pathWithZeroes.slice(-4)[3 - 1] == node &&
-                !pathWithZeroes.includes("T") &&
-                handleShort();
+            if (!isValid && node === pathWithZeroes[pathWithZeroes.length - 2] && !pathWithZeroes.includes("T") && !pathWithZeroes.includes("eos") && i === pathWithZeroes.length - 2) {
+              handleValid();
+              isValid = true;
+            } else if (pathWithZeroes.includes("T")) {
+              if (!pathWithZeroes.includes("eos")) {
+                handleTrapped();
+              }
+              handleTrapped();
+            } else if (pathWithZeroes.slice(-4)[3 - 1] === node && !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2) {
+              handleShort();
+            }
           }, i * 200);
         });
       } else {
