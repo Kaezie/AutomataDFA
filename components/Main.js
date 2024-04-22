@@ -16,6 +16,7 @@ const Main = () => {
   const [prob2, setProb2] = useState(false);
   const [currentNode, setCurrentNode] = useState(0);
   const [simulating, setSimulating] = useState(false);
+  const [simulationCompleted, setSimulationCompleted] = useState(false);
 
   const validString = useToast();
   const trapString = useToast();
@@ -81,18 +82,21 @@ const Main = () => {
     setSimulating(false);
     validToast();
     setData(results);
+    setSimulationCompleted(true);
   };
   const handleTrapped = () => {
     // console.log("DONE TRAPPED");
     setSimulating(false);
     trapToast();
     setData(results);
+    setSimulationCompleted(true);
   };
   const handleShort = () => {
     // console.log("DONE SHORT");
     setSimulating(false);
     shortToast();
     setData(results);
+    setSimulationCompleted(true);
   };
 
   const handleInputString = () => {
@@ -130,6 +134,7 @@ const Main = () => {
         // console.log("No valid configuration for input string!!");
       }
     }
+    setSimulationCompleted(false);
   };
 
   const handleSimulation = (e) => {
