@@ -22,14 +22,14 @@ export class DFA {
     if (this.currentInputPos == "T") {
       this.result = "Invalid";
       
-      // console.log("Invalid String TRAP");
-      // console.log("Path Taken:", this.path);
+      console.log("Invalid String TRAP");
+      console.log("Path Taken:", this.path);
     } else {
       if (
         this.input[this.currentInputPos] != undefined
       ) {
         let node = this.problem[this.currentNode - 1];
-        // console.log(this.path, this.input[this.currentInputPos]);
+        console.log(this.path, this.input[this.currentInputPos]);
 
         if (
           this.input[this.currentInputPos] == "a" ||
@@ -41,20 +41,13 @@ export class DFA {
             node.direction[
               this.language.indexOf(this.input[this.currentInputPos])
             ];
-          // console.log(`currentNode: ${this.currentNode}`);
-          // console.log(
-          //   `node.direction[]: ${this.language.indexOf(
-          //     this.input[this.currentInputPos]
-          //   )}`
-          // );
+          console.log(`currentNode: ${this.currentNode}`);
+          console.log(`node.direction[]: ${this.language.indexOf(this.input[this.currentInputPos])}`);
           this.currentNode != undefined && this.path.push(this.currentNode);
         } else {
           this.currentNode = "T";
           this.result = "Invalid";
-          // console.log(
-          //   "String contains a letter not in the language - ",
-          //   this.language
-          // );
+          console.log("String contains a letter not in the language - ",this.language);
         }
         this.node();
       } else {
