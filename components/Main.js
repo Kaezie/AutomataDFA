@@ -83,7 +83,7 @@ const Main = () => {
     setData(results);
   };
   const handleTrapped = () => {
-    // console.log("DONE TRAPPED");
+    console.log("DONE TRAPPED");
     setSimulating(false);
     trapToast();
     setData(results);
