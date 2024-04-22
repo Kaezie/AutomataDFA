@@ -158,7 +158,9 @@ const Main = () => {
                   ? handleValid()
                   : node == "T" && pathWithZeroes.slice(-4)[0] == "T"
                   ? handleTrapped()
-                  : null;
+                  : pathWithZeroes.slice(-4)[3 - 1] == node &&
+                  !pathWithZeroes.includes("T") && i === pathWithZeroes.length - 2 && 
+                  handleShort();
           }, i * 200);
       });
       } else {
