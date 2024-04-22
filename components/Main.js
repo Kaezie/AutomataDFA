@@ -162,7 +162,7 @@ const Main = () => {
             }
             // Stop simulation if trap state reached
             if (node === "T") {
-              setSimulating(false);
+              handleTrapped();
             }
           }, i * 200);
         });
