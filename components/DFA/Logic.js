@@ -21,7 +21,6 @@ export class DFA {
     this.currentInputPos += 1;
     if (this.currentInputPos == "T") {
       this.result = "Invalid";
-      return;
       // console.log("Invalid String TRAP");
       // console.log("Path Taken:", this.path);
     } else {
@@ -61,6 +60,8 @@ export class DFA {
           this.result = "Valid";
           // console.log("Valid String");
           // console.log("Path Taken", this.path);
+        } else if(this.currentNode = "T"){
+          this.result = "Invalid";
         } else {
           this.result = "Invalid";
           // console.log("Invalid String SHORT");
@@ -83,7 +84,6 @@ export const problem1 = [
   new Node(8, 6, 9),
   new Node(9, 10, 10),
   new Node(10, 10, 10),
-  new Node("T","T","T"),
 ];
 
 export const problem2 = [
