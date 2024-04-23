@@ -72,7 +72,7 @@ const LeftBox = ({
                     variant="data"
                     rightIcon={
                       data.result == "Valid" ? (
-                        <Box color="red.300">
+                        <Box bg='black' color="red.300">
                           <FaCheck />
                         </Box>
                       ) : (
