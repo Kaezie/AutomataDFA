@@ -293,7 +293,7 @@ const SecondDFA = ({ currentNodeVal, simulatingStatus }) => {
         whileHover={!simulatingStatus && "scale"}
       >
         <Atom
-        variant="8inner"
+        variant="inner8"
         variants={variants}
         initial="initial"
         >
