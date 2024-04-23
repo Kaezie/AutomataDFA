@@ -69,7 +69,11 @@ const LeftBox = ({
               <Flex align="center">
                 {data && (
                   <Button
-                    colorScheme= 'green'
+                    variant="data"
+                    colorScheme={
+                      data.result == "Valid" ?'green': 
+                      data.result == "Invalid" && 'red'
+                    }
                   >
                     {data.result}
                   </Button>

@@ -20,9 +20,8 @@ export const Button = {
       fontWeight: "bold",
       color: "gray.700",
       textTransform: "uppercase",
-
       fontSize: ["0.7em", "0.7em", "0.9em"],
-      bg: "gray.100",
+
     },
     clear: {
       bg: "none",
