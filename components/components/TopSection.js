@@ -70,10 +70,7 @@ const LeftBox = ({
                 {data && (
                   <Button
                     variant="data"
-                    colorScheme={
-                      data.result == "Valid" ?'green': 
-                      data.result == "Invalid" && 'red'
-                    }
+                    colorScheme= 'green'
                   >
                     {data.result}
                   </Button>
