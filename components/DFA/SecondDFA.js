@@ -292,7 +292,13 @@ const SecondDFA = ({ currentNodeVal, simulatingStatus }) => {
         animate={currentNodeVal == 1 ? "pulse" : ""}
         whileHover={!simulatingStatus && "scale"}
       >
-        -
+        <Atom
+        variant="8inner"
+        variants={variants}
+        initial="initial"
+        >
+          -
+        </Atom>
       </Atom>
     </>
   );

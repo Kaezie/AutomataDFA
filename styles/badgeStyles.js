@@ -152,6 +152,13 @@ export const Badge = {
 
       borderColor: "green.300",
     },
+    8: {
+      top: "50%",
+      left: "50%",
+      h: "2.25em",
+      w: "2.25em",
+      borderColor: "green.300",
+    },
   },
   defaultProps: {
     size: "node",
