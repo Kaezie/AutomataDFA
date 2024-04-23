@@ -134,6 +134,13 @@ export const Badge = {
 
       borderColor: "green.300",
     },
+    inner5: {
+      top: "50%",
+      left: "50%",
+      h: "2.25em",
+      w: "2.25em",
+      borderColor: "green.300",
+    },
     6: {
       top: "85%",
       left: "50%",
@@ -150,13 +157,6 @@ export const Badge = {
       top: "50%",
       left: "10%",
 
-      borderColor: "green.300",
-    },
-    inner8: {
-      top: "50%",
-      left: "50%",
-      h: "2.25em",
-      w: "2.25em",
       borderColor: "green.300",
     },
   },
