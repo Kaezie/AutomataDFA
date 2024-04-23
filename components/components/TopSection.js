@@ -68,22 +68,19 @@ const LeftBox = ({
               />
               <Flex align="center">
                 {data && (
-                  <Button
-                    variant="data"
-                    rightIcon={
-                      data.result == "Valid" ? (
-                        <Box bg='black' color="red.300">
-                          <FaCheck />
-                        </Box>
-                      ) : (
-                        data.result == "Invalid" && (
-                          <Box color="pink.300">
-                            <ImCross />
-                          </Box>
-                        )
-                      )
-                    }
-                  >
+                  <Button variant="data">
+                    {data.result === "Valid" ? (
+                      <Box bg='black' color="red.300">
+                        <FaCheck />
+                      </Box>
+                    ) : data.result === "Invalid" ? (
+                      <Box bg='black' color="pink.300">
+                        <ImCross />
+                      </Box>
+                    ) : (
+                      // If data.result is neither "Valid" nor "Invalid", you may want to handle this case
+                      <Box>Unknown Result</Box>
+                    )}
                     {data.result}
                   </Button>
                 )}
