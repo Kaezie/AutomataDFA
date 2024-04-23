@@ -72,17 +72,19 @@ const LeftBox = ({
                     variant="data"
                     rightIcon={
                       data.result == "Valid" ? (
-                        <Box bg='teal.300'>
+                        <Box color="red.300">
+                          <FaCheck />
                         </Box>
                       ) : (
                         data.result == "Invalid" && (
-                          <Box bg='pink.300'>
+                          <Box color="pink.300">
+                            <ImCross />
                           </Box>
                         )
                       )
                     }
                   >
-                    {data.result} wow
+                    {data.result}
                   </Button>
                 )}
               </Flex>
