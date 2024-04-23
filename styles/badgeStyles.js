@@ -4,7 +4,7 @@ export const Badge = {
   },
   sizes: {
     node: {
-      bg: "white.500",
+      bg: "gray.500",
       color: ["gray.200", null, "gray.200"],
 
       // h: ["2em", "2em", "3.5em", "3.5em"],
