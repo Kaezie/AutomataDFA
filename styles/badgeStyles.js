@@ -94,7 +94,8 @@ export const Badge = {
     q10inner: {
       top: "50%",
       left: "50%",
-      size:"40%",
+      h: "2.25em",
+      w: "2.25em",
       borderColor: "green.300",
     },
     T: {
