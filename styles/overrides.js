@@ -18,7 +18,7 @@ export const Button = {
       ml: "3",
       mr: "1",
       fontWeight: "bold",
-      color: "gray.700",
+      color: "white",
       textTransform: "uppercase",
       fontSize: ["0.7em", "0.7em", "0.9em"],
 
