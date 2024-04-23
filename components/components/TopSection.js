@@ -69,7 +69,6 @@ const LeftBox = ({
               <Flex align="center">
                 {data && (
                   <Button
-                    variant="data"
                     colorScheme= 'green'
                   >
                     {data.result}
