@@ -72,11 +72,11 @@ const LeftBox = ({
                     variant="data"
                     rightIcon={
                       data.result == "Valid" ? (
-                        <Box color="teal.300">
+                        <Box bg="teal.300">
                         </Box>
                       ) : (
                         data.result == "Invalid" && (
-                          <Box color="pink.300">
+                          <Box bg="pink.300">
                           </Box>
                         )
                       )
