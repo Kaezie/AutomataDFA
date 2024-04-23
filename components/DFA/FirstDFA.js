@@ -395,7 +395,15 @@ const FirstDFA = ({ currentNode, simulating }) => {
         animate={currentNode == 10 ? "pulse" : ""}
         whileHover={!simulating && "scale"}
       >
-       +  
+       <Atom
+        variant="q10inner"
+        variants={variants}
+        initial="initial"
+        animate={currentNode == 10 ? "pulse" : ""}
+        whileHover={!simulating && "scale"}
+        >
+          +  
+        </Atom>
       </Atom>
       <Atom
         variant="T"
