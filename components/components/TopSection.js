@@ -71,8 +71,8 @@ const LeftBox = ({
                   <Button
                     variant="data"
                     bg={
-                      data.result == "Valid" ?'green.300': 
-                      data.result == "Invalid" && 'red.300'
+                      data.result == "Valid" ?'green.500': 
+                      data.result == "Invalid" && 'red.500'
                     }
                   >
                     {data.result}
