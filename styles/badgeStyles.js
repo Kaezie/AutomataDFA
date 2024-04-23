@@ -92,6 +92,8 @@ export const Badge = {
       borderColor: "green.300",
     },
     q10inner: {
+      top: "50%",
+      left: "50%",
       size:"40%",
       borderColor: "green.300",
     },
