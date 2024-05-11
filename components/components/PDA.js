@@ -34,17 +34,13 @@ import {
             </PopoverHeader>
             <PopoverBody align="center">
               {!prob2 ? (
-                <Box minH="100vh">
-                    <Image
-                        src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
-                    />
-                </Box>
+                <Image
+                src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
+            />
               ) : (
-                <Box minH="100vh">
-                    <Image
-                        src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
-                    />
-                </Box>
+                <Image
+                    src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
+                />
               )}
             </PopoverBody>
           </PopoverContent>
