@@ -38,7 +38,7 @@ import {
                 src={lebonbon}
             />
               ) : (
-                <Image
+                <Img
                 src=".\lebonbon.jpg"
                 />
               )}
