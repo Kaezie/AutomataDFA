@@ -2,6 +2,7 @@ import {
     Box,
     VStack,
     Text,
+    Image,
     Button,
     Popover,
     PopoverTrigger,
@@ -32,18 +33,13 @@ import {
             </PopoverHeader>
             <PopoverBody align="center">
               {!prob2 ? (
-                <VStack>
-                  <Text>{"S -> abaX | babX"}</Text>
-                  <Text>{"X -> aX | bX | babY"}</Text>
-                  <Text>{"Y -> aZ | bZ"}</Text>
-                  <Text>{"Z -> aZ | bZ | aaZ | ^"}</Text>
-                </VStack>
+                <Image
+                    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fthedawg3_%2Fstatus%2F1766659368139776244&psig=AOvVaw2-4SjkQrhnvTug4EwE8wG7&ust=1715499358337000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKDqt6CLhYYDFQAAAAAdAAAAABAE"
+                />
               ) : (
-                <VStack>
-                  <Text>{"S -> 1X | 0X"}</Text>
-                  <Text>{"X -> 1X | 0X | 111Y | 000Y | 101Y"}</Text>
-                  <Text>{"Y -> 1Y | 0X | ^"}</Text>
-                </VStack>
+                <Image
+                    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fthedawg3_%2Fstatus%2F1766659368139776244&psig=AOvVaw2-4SjkQrhnvTug4EwE8wG7&ust=1715499358337000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKDqt6CLhYYDFQAAAAAdAAAAABAE"
+                />
               )}
             </PopoverBody>
           </PopoverContent>
