@@ -2,7 +2,7 @@ import {
     Box,
     VStack,
     Text,
-    Image,
+    Img,
     Button,
     Popover,
     PopoverTrigger,
@@ -34,7 +34,7 @@ import {
             </PopoverHeader>
             <PopoverBody align="center">
               {!prob2 ? (
-                <Image
+                <Img
                 src={lebonbon}
             />
               ) : (
