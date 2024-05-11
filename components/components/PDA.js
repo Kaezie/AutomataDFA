@@ -34,13 +34,17 @@ import {
             </PopoverHeader>
             <PopoverBody align="center">
               {!prob2 ? (
-                <Image
-                    src={lebonbon}
-                />
+                <Box minH="100vh">
+                    <Image
+                        src={lebonbon}
+                    />
+                </Box>
               ) : (
-                <Image
-                    src={lebonbon}              
-                />
+                <Box minH="100vh">
+                    <Image
+                        src={lebonbon}
+                    />
+                </Box>
               )}
             </PopoverBody>
           </PopoverContent>
