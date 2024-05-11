@@ -12,7 +12,6 @@ import {
     PopoverArrow,
     PopoverCloseButton,
   } from "@chakra-ui/react";
-  import lebonbon from "./lebonbon.jpg"
 
   const PDA = ({ prob2 }) => {
     return (
