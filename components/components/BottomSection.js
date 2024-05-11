@@ -5,7 +5,7 @@ import { CgChevronRight } from "react-icons/cg";
 import FirstDFA from "../DFA/FirstDFA";
 import SecondDFA from "../DFA/SecondDFA";
 import CFG from "./CFG";
-import PDA from "./PDA.JS";
+import PDA from "./PDA";
 
 const RightBox = ({
   prob2,
