@@ -35,11 +35,11 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Img
-                src="./assets/lebonbon.jpg"
+                src="assets/lebonbon.jpg"
             />
               ) : (
                 <Img
-                src="./assets/lebonbon.jpg"
+                src="assets/lebonbon.jpg"
                 />
               )}
             </PopoverBody>
