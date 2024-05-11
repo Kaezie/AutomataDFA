@@ -35,11 +35,11 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Image
-                src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
+                src="./lebonbon.jpg"
             />
               ) : (
                 <Image
-                    src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
+                src=".\lebonbon.jpg"
                 />
               )}
             </PopoverBody>
