@@ -36,13 +36,13 @@ import {
               {!prob2 ? (
                 <Box minH="100vh">
                     <Image
-                        src={lebonbon}
+                        src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
                     />
                 </Box>
               ) : (
                 <Box minH="100vh">
                     <Image
-                        src={lebonbon}
+                        src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
                     />
                 </Box>
               )}
