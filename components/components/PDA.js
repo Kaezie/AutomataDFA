@@ -12,7 +12,7 @@ import {
     PopoverArrow,
     PopoverCloseButton,
   } from "@chakra-ui/react";
-  import lebonbon from "/assets/lebonbon.jpg"
+
 
   const PDA = ({ prob2 }) => {
     return (
@@ -35,11 +35,11 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Img
-                src={lebonbon}
+                src="/assets/lebonbon.jpg"
             />
               ) : (
                 <Img
-                src={lebonbon}
+                src="/assets/lebonbon.jpg"
                 />
               )}
             </PopoverBody>
