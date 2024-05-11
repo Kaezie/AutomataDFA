@@ -34,7 +34,10 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Image
-                src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
+                src="/assets/lebonbon.jpg"
+                width={500}
+                height={500}
+                alt="Picture of the author"
             />
               ) : (
                 <Image
