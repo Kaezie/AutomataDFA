@@ -35,7 +35,7 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Image
-                src="/lebonbon.jpg"
+                src={lebonbon}
             />
               ) : (
                 <Image
