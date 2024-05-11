@@ -34,11 +34,11 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Image
-                    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fthedawg3_%2Fstatus%2F1766659368139776244&psig=AOvVaw2-4SjkQrhnvTug4EwE8wG7&ust=1715499358337000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKDqt6CLhYYDFQAAAAAdAAAAABAE"
+                    src="../imageAssets/lebonbon.jpg"
                 />
               ) : (
                 <Image
-                    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fthedawg3_%2Fstatus%2F1766659368139776244&psig=AOvVaw2-4SjkQrhnvTug4EwE8wG7&ust=1715499358337000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKDqt6CLhYYDFQAAAAAdAAAAABAE"
+                    src="../imageAssets/lebonbon.jpg"                
                 />
               )}
             </PopoverBody>
