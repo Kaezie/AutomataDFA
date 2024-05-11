@@ -5,6 +5,7 @@ import { CgChevronRight } from "react-icons/cg";
 import FirstDFA from "../DFA/FirstDFA";
 import SecondDFA from "../DFA/SecondDFA";
 import CFG from "./CFG";
+import PDA from "./PDA.JS";
 
 const RightBox = ({
   prob2,
@@ -43,6 +44,7 @@ const RightBox = ({
             </Flex>
             <Flex>
               <CFG prob2={prob2} />
+              <PDA prob2={prob2} />
               <Button
                 disabled={simulating}
                 onClick={handleSwitch}
