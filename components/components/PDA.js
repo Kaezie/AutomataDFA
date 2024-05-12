@@ -23,7 +23,7 @@ import lebonbon from "/assets/lebonbon.jpg"
           <PopoverContent
             maxW={["17em", null, "16em", null, null, "16em"]}
             _focus=""
-            bg="gray.50"
+            bg="gray.800"
             fontSize={["0.7em", "0.7em", "0.9em"]}
           >
             <PopoverArrow />
