@@ -36,6 +36,17 @@ export const theme = extendTheme({
       bgColor: "white.300",
     },
   },
+  Popover: {
+    baseStyle: {
+      content: {
+        bg: "gray.800",
+        _focus: {
+          boxShadow: 'none',
+        },
+      },
+    },
+    defaultProps: {},
+  },
   components: {
     Button,
     Badge,
