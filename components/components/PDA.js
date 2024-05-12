@@ -13,7 +13,7 @@ import {
     PopoverCloseButton,
   } from "@chakra-ui/react";
 
-import lebonbon from "../../assets/lebonbon.jpg"
+import lebonbon from "/lebonbon.jpg"
 
   const PDA = ({ prob2 }) => {
     return (
