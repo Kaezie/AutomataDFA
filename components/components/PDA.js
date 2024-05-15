@@ -23,8 +23,10 @@ const PDA = ({ prob2 }) => {
       {isOpen && (
         <Box
           position="fixed"
-          top="50%"
-          left="50%"
+          top="40%"
+          left="40%"
+          width="100vw"
+          height="100vh"
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -32,32 +34,25 @@ const PDA = ({ prob2 }) => {
           bg="rgba(0, 0, 0, 0.5)" // Optional: Add a background overlay
           onClick={onClose} // Close when clicking outside the popover content
         >
-          <Box
-            position="relative"
-            bg="gray.800"
-            borderRadius="md"
-            p={4}
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the popover content
-          >
-            <Popover isOpen={isOpen} onClose={onClose} placement="center">
-              <PopoverContent
-                position="relative"
-                bg="gray.800"
-                fontSize={["0.7em", "0.7em", "0.9em"]}
-              >
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader fontWeight="semibold">Push Down Automata</PopoverHeader>
-                <PopoverBody align="center">
-                  {!prob2 ? (
-                    <Image size="1920px" src="/PDA_AB.png" />
-                  ) : (
-                    <Image size="1920px" src="/PDA_01.png" />
-                  )}
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
-          </Box>
+          <Popover isOpen={isOpen} onClose={onClose} placement="center">
+            <PopoverContent
+              _focus=""
+              bg="gray.800"
+              fontSize={["0.7em", "0.7em", "0.9em"]}
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the popover content
+            >
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverHeader fontWeight="semibold">Push Down Automata</PopoverHeader>
+              <PopoverBody align="center">
+                {!prob2 ? (
+                  <Image src="/PDA_AB.png" />
+                ) : (
+                  <Image src="/PDA_01.png" />
+                )}
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
         </Box>
       )}
     </>
