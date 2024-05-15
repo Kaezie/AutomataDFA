@@ -23,8 +23,8 @@ const PDA = ({ prob2 }) => {
       {isOpen && (
         <Box
           position="fixed"
-          top="20%"
-          left="20%"
+          top="0"
+          left="0"
           display="flex"
           justifyContent="center"
           alignItems="center"
