@@ -34,11 +34,13 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Image
-                src="/PDA_AB.png"
+                  size="720px"
+                  src="/PDA_AB.png"
             />
               ) : (
-                <Image
-                    src="/PDA_01.png"
+                <Image 
+                  size="720px"
+                  src="/PDA_01.png"
                 />
               )}
             </PopoverBody>
