@@ -34,11 +34,11 @@ import {
             <PopoverBody align="center">
               {!prob2 ? (
                 <Image
-                src="/lebonbon.jpg"
+                src="/PDA_AB.png"
             />
               ) : (
                 <Image
-                    src="https://pbs.twimg.com/media/GIRvVSCXEAAbLqz?format=jpg&name=medium"
+                    src="/PDA_01.png"
                 />
               )}
             </PopoverBody>
