@@ -25,8 +25,6 @@ const PDA = ({ prob2 }) => {
           position="fixed"
           top="40%"
           left="40%"
-          width="100vw"
-          height="100vh"
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -39,6 +37,7 @@ const PDA = ({ prob2 }) => {
               _focus=""
               bg="gray.800"
               fontSize={["0.7em", "0.7em", "0.9em"]}
+              width="80%" // Adjust width as needed
               onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the popover content
             >
               <PopoverArrow />
