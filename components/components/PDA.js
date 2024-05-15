@@ -21,7 +21,6 @@ import {
             <Button mx="2">Show PDA</Button>
           </PopoverTrigger>
           <PopoverContent
-            maxW={["17em", null, "16em", null, null, "16em"]}
             _focus=""
             bg="gray.800"
             fontSize={["0.7em", "0.7em", "0.9em"]}
