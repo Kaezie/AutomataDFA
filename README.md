@@ -15,10 +15,8 @@ The DFA Simulator is an essential tool for exploring and understanding determini
 - Torrijos, Brian Christian
 
 
-## Views
-- Main page
-  - ![](https://github.com/Randell-janus/DFA-Simulator/blob/master/public/views/regex1.JPG)
-- 2nd Regular Expression
-  - ![](https://github.com/Randell-janus/DFA-Simulator/blob/master/public/views/regex2.JPG)
-- Mobile
-  - ![](https://github.com/Randell-janus/DFA-Simulator/blob/master/public/views/mobile.JPG)
+## Snapshots
+- {a,b} View
+  - ![](https://github.com/apollozeus042/DFA_Group4/blob/main/assets/DFA1.png)
+- {0,1} View
+  - ![](https://github.com/apollozeus042/DFA_Group4/blob/main/assets/DFA2.png)
