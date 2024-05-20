@@ -30,8 +30,8 @@ const RightBox = ({
         >
           <Flex
               align="center"
-              direction={["column", "column", "row", "row", "row", "none"]}
-              display={["flex", "flex", "flex", "flex", "flex", "none"]}
+              direction={["column", "column", "row", "row", "row", "row"]}
+              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
             >
               <Heading
                 w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
@@ -66,6 +66,7 @@ const RightBox = ({
             />
           )}
         </Flex>
+        <Divider my="6" />
       </Flex>
     </>
   );
