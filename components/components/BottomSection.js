@@ -67,6 +67,7 @@ const RightBox = ({
           )}
         </Flex>
         <Divider my="6" />
+        BCS34 | Delgado • Espinosa • Roxas • Salazar • Torrijos
       </Flex>
     </>
   );
