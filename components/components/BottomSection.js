@@ -25,12 +25,12 @@ const RightBox = ({
         <Flex
           align="center"
           my="3"
-          direction="row"
+          direction={["column","column", "row", "row", "row", "row"]}
           justify={["flex-end", null, "flex-end", null, null, "space-between"]}
         >
           <Flex
               align="center"
-              direction={["column","column", "column","column", "column", "column"]}
+              direction={["row","row", "row", "row", "row", "row"]}
               display={["flex", "flex", "flex", "flex", "flex", "flex"]}
             >
               <Heading
