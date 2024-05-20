@@ -1,15 +1,11 @@
 # DFA Simulator
 A **React** application for simulating paths of a given DFA using a state diagram
-- https://dfa-simulator.vercel.app/
+- Forked from [Randell Janus](https://github.com/Randell-janus/DFA-Simulator)
+- https://dfa-group4.vercel.app
 - Deployed with [Vercel](https://vercel.com/solutions/nextjs)
 
-## Deterministic Finite Automaton (DFA)
-A DFA is a state machine made up of states and transitions that can accept or reject a finite string of characters.
-
-## Framework/Libraries
-- Next.js
-- Chakra UI
-- Framer Motion
+## About
+The DFA Simulator is an essential tool for exploring and understanding deterministic finite automata and regular expressions. By leveraging the powerful capabilities of React, NextJS, Chakra UI, and Framer Motion, this simulator offers an intuitive and visually appealing interface that enhances the user experience. 
 
 ## Views
 - Main page
