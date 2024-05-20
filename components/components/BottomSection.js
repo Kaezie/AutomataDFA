@@ -1,4 +1,4 @@
-import { Flex, Button, Heading, Tag,  Divider } from "@chakra-ui/react";
+import { Flex, Button, Heading, Tag,  Divider, Text } from "@chakra-ui/react";
 
 import { CgChevronRight } from "react-icons/cg";
 
