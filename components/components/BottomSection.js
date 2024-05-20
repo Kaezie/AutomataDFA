@@ -32,7 +32,6 @@ const RightBox = ({
               align="center"
               direction={["column", "column", "row", "row", "row", "none"]}
               display={["flex", "flex", "flex", "flex", "flex", "flex"]}
-              // justify="space-between"
             >
               <Heading
                 w={["5em", "5em", "5em", "5em", "5em", "10em"]}>

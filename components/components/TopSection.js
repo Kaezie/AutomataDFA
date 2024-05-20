@@ -42,7 +42,7 @@ const LeftBox = ({
             <Flex>
               <Heading
                 w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
-                  Language Accepted:
+                  Alphabet:
               </Heading>
               <Tag
                 my={1} 
