@@ -31,7 +31,7 @@ const RightBox = ({
           <Flex
               align="center"
               direction={["column", "column", "row", "row", "row", "none"]}
-              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
+              display={["flex", "flex", "flex", "flex", "flex", "none"]}
             >
               <Heading
                 w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
