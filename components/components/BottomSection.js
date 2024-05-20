@@ -30,7 +30,7 @@ const RightBox = ({
         >
           <Flex
               align="center"
-              direction={["row", "row", "row", "row", "row", "row"]}
+              direction={["column", "column", "row", "row", "row", "none"]}
               display={["flex", "flex", "flex", "flex", "flex", "flex"]}
               // justify="space-between"
             >
