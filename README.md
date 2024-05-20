@@ -16,7 +16,7 @@ The DFA Simulator is an essential tool for exploring and understanding determini
 
 
 ## Snapshots
-- {a,b} View
-  - ![](https://github.com/apollozeus042/DFA_Group4/blob/main/assets/DFA1.png)
-- {0,1} View
-  - ![](https://github.com/apollozeus042/DFA_Group4/blob/main/assets/DFA2.png)
+- **{a,b} View**
+  - [](https://github.com/apollozeus042/DFA_Group4/blob/main/assets/DFA1.png)
+- **{0,1} View**
+  - [](https://github.com/apollozeus042/DFA_Group4/blob/main/assets/DFA2.png)
