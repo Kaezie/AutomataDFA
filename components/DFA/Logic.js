@@ -12,7 +12,7 @@ export class DFA {
     this.language = language;
 
     this.currentNode = 1;
-    this.currentInputPos = 0; // Start at position 0
+    this.currentInputPos = 0;
     this.path = [1];
 
     this.node();
@@ -20,46 +20,40 @@ export class DFA {
 
   node() {
     if (this.currentInputPos === this.input.length) {
-      // If input string has been fully processed
       if (this.currentNode === this.problem.length) {
         this.result = "Valid";
       } else {
-        this.result = "Invalid"; // Input is too short
+        this.result = "Invalid";
         this.path.push("eos");
       }
-      return; // End processing
+      return;
     }
 
     const currentChar = this.input[this.currentInputPos];
 
     if (!this.language.includes(currentChar)) {
-      // If current character is not in the language
       this.result = "Invalid";
       this.path.push("eos");
-      return; // End processing
+      return;
     }
 
     const currentNode = this.problem[this.currentNode - 1];
 
     if (currentNode.direction[this.language.indexOf(currentChar)] === "T") {
-      // If the direction leads to a trap state
       this.result = "Invalid";
       this.path.push("T");
-      return; // End processing
+      return;
     }
 
     this.currentNode = currentNode.direction[this.language.indexOf(currentChar)];
     this.path.push(this.currentNode);
 
-    // Move to the next character in the input string
     this.currentInputPos++;
 
-    // Continue processing
     this.node();
   }
 }
 
-// Test data
 export const problem1 = [
   new Node(1, 2, 4),
   new Node(2, "T", 3),

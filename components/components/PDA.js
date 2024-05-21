@@ -29,16 +29,16 @@ const PDA = ({ prob2 }) => {
           justifyContent="center"
           alignItems="center"
           zIndex="popover"
-          bg="rgba(0, 0, 0, 0.5)" // Optional: Add a background overlay
-          onClick={onClose} // Close when clicking outside the popover content
+          bg="rgba(0, 0, 0, 0.5)"
+          onClick={onClose}
         >
           <Popover isOpen={isOpen} onClose={onClose} placement="center">
             <PopoverContent
               _focus=""
               bg="gray.800"
               fontSize={["0.7em", "0.7em", "0.9em"]}
-              width="70%" // Adjust width as needed
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the popover content
+              width="70%"
+              onClick={(e) => e.stopPropagation()}
             >
               <PopoverArrow />
               <PopoverCloseButton />

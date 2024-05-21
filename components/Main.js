@@ -110,28 +110,20 @@ const Main = () => {
     if (!prob2) {
       if (input == "") {
         notInLanguageToast();
-        // console.log("No valid configuration for input string/empty");
       } else if (input.includes("a") || input.includes("b")) {
-        // console.log("PROB1");
         results = new DFA(input, problem1, language1);
-        // console.log(results);
         setData(results);
       } else {
         notInLanguageToast();
-        // console.log("No valid configuration for input string!!");
       }
     } else {
       if (input == "") {
         notInLanguageToast();
-        // console.log("No valid configuration for input string/empty");
       } else if (input.includes("0") || input.includes("1")) {
-        // console.log("PROB2");
         results = new DFA(input, problem2, language2);
-        // console.log(results);
         setData(results);
       } else {
         notInLanguageToast();
-        // console.log("No valid configuration for input string!!");
       }
     }
     setSimulationCompleted(false);
@@ -148,7 +140,7 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem1, language1);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-        let isValid = false; // Track if a valid path has been found
+        let isValid = false;
         pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
@@ -172,8 +164,8 @@ const Main = () => {
         setSimulating(true);
         results = new DFA(input, problem2, language2);
         const pathWithZeroes = [0].concat(...results.path.map((e) => [e, 0]));
-        let isValid = false; // Track if a valid path has been found
-        let trapReached = false; // Track if trap state has been reached
+        let isValid = false;
+        let trapReached = false;
         pathWithZeroes.forEach((node, i) => {
           setTimeout(() => {
             setCurrentNode(node);
