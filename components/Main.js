@@ -13,6 +13,46 @@ const Main = () => {
   const [data, setData] = useState("");
   const [count, setCount] = useState(0);
 
+   const [isMultiMode, setIsMultiMode] = useState(false);
+  const [multiString, setMultiString] = useState("");
+  const [multiResults, setMultiResults] = useState([]);
+
+  const toggleMode = () => {
+    setIsMultiMode((prev) => !prev);
+    setMultiResults([]);
+    setData("");
+  };
+
+  const handleMultiChange = (e) => {
+    setMultiString(e.target.value);
+  };
+
+  const handleMultiTest = (e) => {
+    e.preventDefault();
+    const lines = multiString.split("\n").filter((l) => l.trim() !== "");
+    const results = lines.map((line) => {
+      const trimmed = line.trim().toLowerCase();
+      let result;
+      if (!prob2) {
+        if (trimmed === "" || (!trimmed.includes("a") && !trimmed.includes("b"))) {
+          result = "Invalid";
+        } else {
+          const dfa = new DFA(trimmed, problem1, language1);
+          result = dfa.result;
+        }
+      } else {
+        if (trimmed === "" || (!trimmed.includes("0") && !trimmed.includes("1"))) {
+          result = "Invalid";
+        } else {
+          const dfa = new DFA(trimmed, problem2, language2);
+          result = dfa.result;
+        }
+      }
+      return { string: trimmed, result };
+    });
+    setMultiResults(results);
+  };
+
   const [prob2, setProb2] = useState(false);
   const [currentNode, setCurrentNode] = useState(0);
   const [simulating, setSimulating] = useState(false);
@@ -37,8 +77,10 @@ const Main = () => {
     setString("");
     setCount(0);
     setData("");
-    setSimulating(false);  
-    setCurrentNode(0);   
+    setMultiString("");
+    setMultiResults([]);
+    setSimulating(false);
+    setCurrentNode(0);
     setSimulationCompleted(false);
     closeAll();
   };
@@ -203,6 +245,12 @@ const Main = () => {
         count={count}
         regex1={regex1}
         regex2={regex2}
+        isMultiMode={isMultiMode}
+        toggleMode={toggleMode}
+        multiString={multiString}
+        handleMultiChange={handleMultiChange}
+        handleMultiTest={handleMultiTest}
+        multiResults={multiResults}
       />
       <BottomSection
         prob2={prob2}

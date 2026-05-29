@@ -40,8 +40,8 @@ const CFG = ({ prob2 }) => {
                 <Text>{"D -> B | C"}</Text>
                 <Text>{"E -> baE | Λ"}</Text>
                 <Text>{"F -> babF | abaF | Λ"}</Text>
-                <Text>{"G -> bab | aba"}</Text>
-                <Text>{"H -> aH | bH | Λ"}</Text>
+                <Text>{"G -> aG | bG | Λ"}</Text>
+                <Text>{"H -> bab | aba"}</Text>
               </VStack>
             ) : (
               <VStack> 
