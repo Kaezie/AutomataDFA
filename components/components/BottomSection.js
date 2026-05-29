@@ -1,6 +1,4 @@
-import { Flex, Button, Heading, Tag,  Divider, Text } from "@chakra-ui/react";
-
-import { CgChevronRight } from "react-icons/cg";
+import { Flex, Button, Heading, Tag,  Divider, Text, Select } from "@chakra-ui/react";
 
 import FirstDFA from "../DFA/FirstDFA";
 import SecondDFA from "../DFA/SecondDFA";
@@ -18,43 +16,38 @@ const RightBox = ({
   return (
     <>
       <Flex
-        direction="column"
+         direction="column"
         mb={[14, 14, 16, 16, 16, 0]}
         w={["20em", null, "40em", null, null, "60em"]}
       >
         <Flex
           align="center"
-          my="3"
-          direction={["column","column", "row", "row", "row", "row"]}
-          justify={["flex-end", null, "flex-end", null, null, "space-between"]}
+          mb="1"
+          direction="row"
         >
-          <Flex
-              align="center"
-              direction={["row","row", "row", "row", "row", "row"]}
-              display={["flex", "flex", "flex", "flex", "flex", "flex"]}
-            >
-              <Heading
-                w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
-                Regular Expression:
-              </Heading>
-              <Tag my={1} fontSize={["0.7em", "0.7em", "0.9em"]}>
-                {!prob2 ? regex1 : regex2}
-              </Tag>
-            </Flex>
-            <Flex>
-              <CFG prob2={prob2} />
-              <PDA prob2={prob2} />
-              <Button
-                disabled={simulating}
-                onClick={handleSwitch}
-                rightIcon={<CgChevronRight />}
-              >
-                Switch RegEx
-              </Button>
-            </Flex>
-          </Flex>
+          <Heading w="10em">
+            Regular Expression:
+          </Heading>
+          <Select
+            isDisabled={simulating}
+            onChange={(e) => {
+              if ((e.target.value === "2") !== prob2) handleSwitch();
+            }}
+            value={!prob2 ? "1" : "2"}
+            size="sm"
+            w="auto"
+            borderRadius="md"
+          >
+            <option value="1">{regex1}</option>
+            <option value="2">{regex2}</option>
+          </Select>
+        </Flex>
+        <Flex mb="4" gap="1" mt="4">
+          <CFG prob2={prob2} />
+          <PDA prob2={prob2} />
+        </Flex>
         <Flex
-          h={["12em", null, "18em", null, null, "18em"]}
+          h={["12em", null, "18em", null, null, "22em"]}
           pos="relative"
         >
           {!prob2 ? (
@@ -66,10 +59,11 @@ const RightBox = ({
             />
           )}
         </Flex>
-        <Divider my="6" />
+        <Divider my="3" w="100" />
         <Text
+        color="#645e6b"
         align="center">
-        BCS34 | Delgado • Espinosa • Roxas • Salazar • Torrijos
+        BCS35 | Abas • Alipit • Balagao • Francisco
         </Text>
       </Flex>
     </>

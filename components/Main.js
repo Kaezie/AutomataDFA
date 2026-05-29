@@ -6,8 +6,8 @@ import TopSection from "./components/TopSection";
 import BottomSection from "./components/BottomSection";
 
 const Main = () => {
-  const regex1 = "(aba+bab)(a+b)*(bab)(a+b)*(a+b+ab+ba)(a+b+aa)*";
-  const regex2 = "((101+111+101)+(1+0+11)) (1+0+01)* (111+000+101) (1+0)*";
+  const regex1 = "(bab + bbb) a*b* (a* + b*)(ba)*(aba)(bab + aba)* bb (a+b)* (bab + aba)(a+b)*"; //updated
+  const regex2 = "(1+0)* 1* 0* (101+01+000) (1+0)* (101+00)* (111+00+101) (1+0)*"; //updated
 
   const [string, setString] = useState("");
   const [data, setData] = useState("");
@@ -37,6 +37,9 @@ const Main = () => {
     setString("");
     setCount(0);
     setData("");
+    setSimulating(false);  
+    setCurrentNode(0);   
+    setSimulationCompleted(false);
     closeAll();
   };
   const handleSwitch = () => {

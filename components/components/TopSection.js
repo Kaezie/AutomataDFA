@@ -29,19 +29,19 @@ const LeftBox = ({
   return (
     <>
       <Box
-        w={["20em", "20em", "40em", "40em", "40em", "52em"]}
+        w={["20em", "20em", "40em", "40em", "40em", "54em"]}
         mr={[0, 0, 0, 0, 0, 24]}
       >
         <Flex align="Aflex-end" justify="space-between">
-          <Heading variant="title">Group 4</Heading>
+          <Heading variant="title">Group 1: DFA Simulator</Heading>
         </Flex>
 
-        <Divider mb="6" />
+        <Divider mb="5" w="115%" />
 
         <Box>
             <Flex>
               <Heading
-                w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
+                w={["4em", "4em", "4em", "4em", "5em", "5em"]}>
                   Alphabet:
               </Heading>
               <Tag
@@ -55,14 +55,14 @@ const LeftBox = ({
               align="center"
               >
               <Heading
-                w={["5em", "5em", "5em", "5em", "5em", "10em"]}>
+                w={["4em", "4em", "4em", "4em", "4em", "7em"]}>
                 Input String:
               </Heading>
               <Input
                 maxLength="500"
                 fontSize={["0.7em", "0.7em", "0.9em"]}
-                my={3}
-                placeholder={!prob2 ? "e.g. babbabab" : "e.g. 0110101"}
+                my={4}
+                placeholder={!prob2 ? "e.g. babababbbab" : "e.g. 01101"}
                 value={string}
                 onChange={handleTextChange}
               />
@@ -84,7 +84,7 @@ const LeftBox = ({
             <Flex justify="space-between" align="center">
               <Flex>
                 <Button type="submit" disabled={simulating}>
-                  Compile
+                  Validate
                 </Button>
                 <Button
                   isLoading={simulating}
@@ -96,9 +96,14 @@ const LeftBox = ({
                 >
                   Simulate
                 </Button>
+                <Button onClick={handleReset}
+                ml={2}
+                >
+                  Clear All
+                </Button>
               </Flex>
             </Flex>
-            <Divider my="6" />
+            <Divider my="5" w="115%" />
           </form>
         </Box>
       </Box>

@@ -1,418 +1,295 @@
-import { Badge, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import {
-  ArrowHead,
-  ArrowLoopSm,
-  ArrowLoopLg,
-  ArrowBody,
-} from "../components/Arrows";
 
-const Atom = motion(Badge);
+const MotionCircle = motion.circle;
 
-const variants = {
-  initial: { y: "-50%", x: "-50%" },
-  pulse: { scale: 5, transition: { duration: 0.6 } },
-  bounce: {
-    y: ["-50%", "-200%", "-50%"],
-    x: ["-50%", "-50%", "-50%"],
-    scale: 2.5,
-    transition: { duration: 0.4 },
-  },
-  scale: { scale: 1.5 },
+const STATES = {
+  q1:  { x: 30,   y: 210 },
+  q19: { x: 110,  y: 210 },
+  q24: { x: 190,  y: 210 },
+  q25: { x: 270,  y: 210 },
+  q26: { x: 350,  y: 150 },
+  q27: { x: 350,  y: 270 },
+  q28: { x: 430,  y: 150 },
+  q29: { x: 510,  y: 150 },
+  q30: { x: 510,  y: 270 },
+  q20: { x: 590,  y: 150 },
+  q21: { x: 590,  y: 270 },
+  q22: { x: 670,  y: 150 },
+  q23: { x: 670,  y: 270 },
+  q31: { x: 750,  y: 150 },
+  q32: { x: 750,  y: 270 },
+  q2:  { x: 830,  y: 150 },
+  q3:  { x: 830,  y: 270 },
+  q9:  { x: 910,  y: 150 },
+  q10: { x: 910,  y: 270 },
+  q16: { x: 910,  y: 60 },
+  q17: { x: 990,  y: 270 },
+  q8:  { x: 1070, y: 210 },
+  q15: { x: 1070, y: 330 },
+  q7:  { x: 990,  y: 380 },
+  q14: { x: 910,  y: 380 },
+  q18: { x: 830,  y: 380 },
+  q4:  { x: 750,  y: 380 },
+  q11: { x: 630,  y: 330 },
+  q5:  { x: 670,  y: 380 },
+  q12: { x: 590,  y: 420 },
+  q6:  { x: 510,  y: 340 },
+  q13: { x: 430,  y: 380 },
+  T:   { x: 590,  y:  40  },
 };
 
-const FirstDFA = ({ currentNode, simulating }) => {
+// index → state key (matches Logic.js)
+const NODE_TO_STATE = {
+  1:"q1",2:"q19",3:"q24",4:"q25",5:"q26",6:"q28",7:"q27",8:"q29",
+  9:"q30",10:"q20",11:"q21",12:"q22",13:"q23",14:"q31",15:"q32",
+  16:"q2",17:"q3",18:"q9",19:"q10",20:"q16",21:"q17",22:"q8",
+  23:"q15",24:"q7",25:"q14",26:"q18",27:"q4",28:"q11",29:"q5",
+  30:"q12",31:"q6",32:"q13",T:"T",
+};
+
+const R = 16;
+
+function edgePoint(cx, cy, tx, ty, r = R) {
+  const dx = tx - cx, dy = ty - cy;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  if (dist === 0) return [cx, cy];
+  return [cx + (dx / dist) * r, cy + (dy / dist) * r];
+}
+
+function Arrow({ from, to, label, labelDx = 0, labelDy = -8, bend = 0, color}) {
+  const f = STATES[from], t = STATES[to];
+
+  
+  const strokeColor = to === "T" ? "#FC8181" : (color || "#ebdcff");
+
+  const [x1, y1] = edgePoint(f.x, f.y, t.x, t.y);
+  const [x2, y2] = edgePoint(t.x, t.y, f.x, f.y);
+
+  let d, lx, ly;
+
+  if (bend !== 0) {
+    const mx = (x1 + x2) / 2 + bend * (-(y2 - y1));
+    const my = (y1 + y2) / 2 + bend * (x2 - x1);
+    d = `M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
+    lx = (x1 + 2 * mx + x2) / 4 + labelDx;
+    ly = (y1 + 2 * my + y2) / 4 + labelDy;
+  } else {
+    d = `M ${x1} ${y1} L ${x2} ${y2}`;
+    lx = (x1 + x2) / 2 + labelDx;
+    ly = (y1 + y2) / 2 + labelDy;
+  }
+
   return (
-    <>
-      {/* LETTERS */}
-      {/* q2 q3 */}
-      <Text size="label" top="15%" left="30%">
-        b
-      </Text>
-      {/* q1 q2 */}
-      <Text top="31%" left="14%" size="label">
-        a
-      </Text>
-      {/* q2 t */}
-      <Text top="31%" left="26%" size="label">
-        a
-      </Text>
-      {/* q4 t */}
-      <Text top="69%" left="26%" size="label">
-        b
-      </Text>
-      {/* q5 t */}
-      <Text top="69%" left="34%" size="label">
-        a
-      </Text>
-      {/* q3 t */}
-      <Text top="31%" left="34%" size="label">
-        b
-      </Text>
-      {/* q1 q4 */}
-      <Text top="69%" left="14%" size="label">
-        b
-      </Text>
-      {/* q4 q5 */}
-      <Text top="83%" left="30%" size="label">
-        a
-      </Text>
-      {/* q5 q6 */}
-      <Text top="69%" left="46%" size="label">
-        b
-      </Text>
-      {/* q8 q6 */}
-      <Text top="69%" left="54%" size="label">
-        a
-      </Text>
-      {/* q8 q9 */}
-      <Text top="69%" left="66%" size="label">
-        b
-      </Text>
-      {/* q3 q6 */}
-      <Text top="31%" left="46%" size="label">
-        a
-      </Text>
-      {/* q6 q7 */}
-      <Text top="31%" left="54%" size="label">
-        b
-      </Text>
-      {/* q6 q6 */}
-      <Text
-        top={["45%", "45%", "50%", "50%", "50%", "50%"]}
-        left={["40%", "40%", "42%", null, null, "43%"]}
-        size="label"
+    <g>
+      <path
+        d={d}
+        fill="none"
+        stroke={strokeColor}   // uses dynamic color
+        strokeWidth="2"
+        markerEnd="url(#arrow1)"
+      />
+      <text
+        x={lx}
+        y={ly}
+        fontSize="14"
+        fill={strokeColor}     // optional: match label color
+        textAnchor="middle"
       >
-        a
-      </Text>
-      {/* q9 q10 */}
-      <Text top="45%" left="80%" size="label">
-        a,b
-      </Text>
-      {/*q10 q10*/}
-      <Text top="45%" left="97.3%" size="label">
-        a,b
-      </Text>
-      {/* q7 q7 */}
-      <Text
-        top="19.5%"
-        left={["71%", "71%", "68%", null, null, "67%"]}
-        size="label"
-      >
-        b
-      </Text>
-      {/* q7 q8 */}
-      <Text
-        top="50%"
-        left={["58.5%", "58.5%", "59%", null, null, "59%"]}
-        size="label"
-      >
-        a
-      </Text>
-      {/* ARROW BODY */}
-      {/* q2 q3 */}
-      <ArrowBody
-        w={["3em", "3em", "9em", "9em", "9em", "9em"]}
-        top={["27%", "27%", "25%", "25%", "25%", "25%"]}
-        left="30%"
-        rotate="0"
+        {label}
+      </text>
+    </g>
+  );
+}
+
+// Self loop
+function SelfLoop({ state, label, offsetY = -1 }) {
+  const s = STATES[state];
+  const x = s.x, y = s.y;
+  return (
+    <g>
+      <path
+        d={`M ${x - 12} ${y - R} C ${x - 20} ${y - R - 35} ${x + 20} ${y - R - 35} ${x + 12} ${y - R}`}
+        fill="none" stroke="#ebdcff" strokeWidth="1.5" markerEnd="url(#arrow1)"
       />
-      {/* q9 q10 */}
-      <ArrowBody
-        w={["3em", "3em", "9em", "9em", "9em", "9em"]}
-        top={["58%", "58%", "55%", "55%", "55%", "55%"]}
-        left="80%"
-      />
-      {/* q4 q5 */}
-      <ArrowBody
-        w={["3em", "3em", "9em", "9em", "9em", "9em"]}
-        top={["87%", "87%", "85%", "85%", "85%", "85%"]}
-        left="30%"
-      />
-      {/* q7 q8 */}
-      <ArrowBody
-        w={["7em", "7em", "9em", "9em", "9em", "9em"]}
-        top="50%"
-        left={["55.5%", "55.5%", "58%", "58%", "58%", "58.5%"]}
-        rotate="90"
-      />
-      {/* trap ul */}
-      <ArrowBody
-        w={["8em", "8em", "13em", "13em", "13em", "15em"]}
-        top="58%"
-        left={["27.5%", "27.5%", "30%", "30%", "30%", "30%"]}
-        rotate={["60", "60", "50", "50", "50", "42"]}
-      />
-      {/* q6 ul */}
-      <ArrowBody
-        w={["8em", "8em", "13em", "13em", "13em", "15em"]}
-        top="58%"
-        left={["47%", "47%", "50%", "50%", "50%", "50%"]}
-        rotate={["60", "60", "50", "50", "50", "42"]}
-      />
-      {/* trap ur */}
-      <ArrowBody
-        w={["8em", "8em", "13em", "13em", "13em", "15em"]}
-        top="43%"
-        left={["27.5%", "27.5%", "30%", "30%", "30%", "30%"]}
-        rotate={["120", "120", "128", "128", "128", "136"]}
-      />
-      {/* q6 ur */}
-      <ArrowBody
-        w={["8em", "8em", "13em", "13em", "13em", "15em"]}
-        top="43%"
-        left={["47.5%", "47.5%", "50%", "50%", "50%", "50%"]}
-        rotate={["120", "120", "128", "128", "128", "136"]}
-      />
-      {/* q1 q2 */}
-      <ArrowBody
-        w={["5em", "5em", "8em", "8em", "8em", "8em"]}
-        top="31%"
-        left={["11%", "11%", "14%", "14%", "14%", "14%"]}
-        rotate={["120", "120", "128", "128", "128", "136"]}
-      />
-      {/* q8 q9 */}
-      <ArrowBody
-        w={["4em", "4em", "8em", "8em", "8em", "8em"]}
-        top={["65%", "65%", "63%", "63%", "63%", "65%"]}
-        left={["60%", "60%", "63%", "63%", "63%", "63%"]}
-        rotate={["120", "120", "128", "128", "128", "136"]}
-      />
-      {/* q1 q4 */}
-      <ArrowBody
-        w={["5em", "5em", "8em", "8em", "8em", "8em"]}
-        top="71%"
-        left={["12%", "12%", "14%", "14%", "14%", "14%"]}
-        rotate={["60", "60", "50", "50", "50", "42"]}
+      <text x={x} y={y - R - 28 + offsetY} fontSize="14" fill="#CBD5E0" textAnchor="middle">{label}</text>
+    </g>
+  );
+}
+
+function StateNode({ stateKey, active, label = "", accept = false }) {
+  const s = STATES[stateKey];
+  const isTrap = stateKey === "T";
+  const color = isTrap ? "#FC8181" : accept ? "#68D391" : "#bdaff1";
+  
+  return (
+    <g>
+      <MotionCircle
+        cx={s.x} cy={s.y} r={R}
+        fill={active ? color : "#2D3748"}
+        stroke={color} strokeWidth="1.8"
+        animate={active ? { scale: [1, 1.4, 1], transition: { duration: 0.4 } } : { scale: 1 }}
+        style={{ transformOrigin: `${s.x}px ${s.y}px` }}
       />
 
-      {/* ARROWS */}
-      {/* q6 q6 */}
-      <ArrowLoopSm
-        top={["50%", "50%", "50%", null, null, "50%"]}
-        left={["42.5%", "42.5%", "44.4%", null, null, "46%"]}
-        rotate="360"
-      />
-      <ArrowLoopLg
-        top={["50%", "50%", "50%", null, null, "51%"]}
-        left={["42.5%", "42.5%", "44.4%", null, null, "45.7%"]}
-        rotate="20"
-      />
-      {/*q10 q10*/}
-      <ArrowLoopSm
-        top={["50%", "50%", "50%", null, null, "50%"]}
-        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
-        rotate="180"
-      />
-      <ArrowLoopLg
-        top={["50%", "50%", "50%", null, null, "48.5%"]}
-        left={["94.1%", "94.1%", "94.1%", null, null, "94.1%"]}
-        rotate="200"
-      />
-      {/* q7 q7 */}
-      <ArrowLoopSm
-        top={["20%", "20%", "20%", null, null, "20%"]}
-        left={["67.3%", "67.3%", "65.6%", null, null, "64%"]}
-        rotate="180"
-      />
-      <ArrowLoopLg
-        top={["20%", "20%", "20%", null, null, "18.5%"]}
-        left={["67.3%", "67.3%", "65.6%", null, null, "64.3%"]}
-        rotate="200"
-      />
-      {/* q2 q3 */}
-      <ArrowHead
-        top={["19.6%", "19.6%", "20%", "20%", "20%", "20%"]}
-        left={["34.3%", "34.3%", "35.3%", "35.3%", "35.3%", "36.6%"]}
-      />
-      {/* q4 q5 */}
-      <ArrowHead
-        top={["79.3%", "79.3%", "79.9%", "79.9%", "79.9%", "79.9%"]}
-        left={["34.3%", "34.3%", "35.3%", "35.3%", "35.3%", "36.6%"]}
-      />
-      {/* q1 q2 */}
-      <ArrowHead
-        top={["29%", "29%", "29.2%", "29.2%", "29.2%", "27.7%"]}
-        left={["17.2%", "17.2%", "17.6%", "17.6%", "17.6%", "17.3%"]}
-        rotate={["-57", "-57", "-50", "-50", "-50", "-48"]}
-      />
-      {/* q1 q4 */}
-      <ArrowHead
-        top={["71%", "71%", "71.7%", "71.7%", "71.7%", "73.5%"]}
-        left={["17.4%", "17.4%", "17.3%", "17.3%", "17.3%", "17.1%"]}
-        rotate={["47", "47", "40", "40", "40", "40"]}
-      />
-      {/* q2 t */}
-      <ArrowHead
-        top={["41.6%", "41.6%", "41.7%", "41.7%", "41.7%", "42.6%"]}
-        left={["27.3%", "27.3%", "27.1%", "27.1%", "27.1%", "27.3%"]}
-        rotate={["47", "47", "40", "40", "40", "40"]}
-      />
-      {/* q4 t */}
-      <ArrowHead
-        top={["59.3%", "59.3%", "59.3%", "59.3%", "59.3%", "58.5%"]}
-        left={["27.4%", "27.4%", "27.3%", "27.3%", "27.3%", "27.5%"]}
-        rotate={["-59", "-59", "-50", "-50", "-50", "-48"]}
-      />
-      {/* q5 t */}
-      <ArrowHead
-        top={["58.4%", "58.4%", "58.2%", "58.2%", "58.2%", "58.2%"]}
-        left={["33.1%", "33.1%", "33.3%", "33.3%", "33.3%", "32.5%"]}
-        rotate={["235", "235", "230", "230", "230", "230"]}
-      />
-      {/* q3 t */}
-      <ArrowHead
-        top={["42%", "42%", "42%", "42%", "42%", "42%"]}
-        left={["33.2%", "33.2%", "33.2%", "33.2%", "33.2%", "32.5%"]}
-        rotate={["130", "130", "130", "130", "130", "130"]}
-      />
-      {/* q3 q6 */}
-      <ArrowHead
-        top={["41.8%", "41.8%", "41.7%", "41.7%", "41.7%", "42.8%"]}
-        left={["46.6%", "46.6%", "47.1%", "47.1%", "47.1%", "47.3%"]}
-        rotate={["50", "50", "40", "40", "40", "40"]}
-      />
-      {/* q5 q6 */}
-      <ArrowHead
-        top={["59.3%", "59.3%", "59.3%", "59.3%", "59.3%", "58.5%"]}
-        left={["47.2%", "47.2%", "47.4%", "47.4%", "47.4%", "47.5%"]}
-        rotate={["-59", "-59", "-50", "-50", "-50", "-48"]}
-      />
-      {/* q6 q7 */}
-      <ArrowHead
-        top={["29.6%", "29.6%", "29.2%", "29.2%", "29.2%", "27%"]}
-        left={["57.8%", "57.8%", "57.9%", null, null, "57.3%"]}
-        rotate={["-59", "-59", "-50", "-50", "-50", "-48"]}
-      />
-      {/* q7 q8 */}
-      <ArrowHead
-        top={["70%", "70%", "69.6%", null, null, "68.7%"]}
-        left={["60.2%", "60.2%", "60.3%", null, null, "60.1%"]}
-        rotate="90"
-      />
-      {/* q8 q6 */}
-      <ArrowHead
-        top={["59.3%", "59.3%", "58.3%", null, null, "58.3%"]}
-        left={["52.8%", "52.8%", "53.3%", null, null, "52.5%"]}
-        rotate={["240", "240", "230", "230", "230", "230"]}
-      />
-      {/* q8 q9 */}
-      <ArrowHead
-        top={["59.3%", "59.3%", "59.3%", "59.3%", "59.3%", "58.3%"]}
-        left={["67.6%", "67.6%", "67.4%", null, null, "67.4%"]}
-        rotate={["-64", "-64", "-50", "-50", "-50", "-48"]}
-      />
-      {/* q9 q10 */}
-      <ArrowHead
-        top={["50%", "50%", "49.7%", null, null, "49.7%"]}
-        left={["84%", "84%", "85.2%", null, null, "86.6%"]}
-      />
-      <Atom
-        variant="q1"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 1 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        -
-      </Atom>
-      <Atom
-        variant="q2"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 2 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q3"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 3 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q4"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 4 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q5"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 5 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q6"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 6 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q7"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 7 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q8"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 8 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q9"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 9 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        
-      </Atom>
-      <Atom
-        variant="q10"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == 10 ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-       <Atom
-        variant="q10inner"
-        variants={variants}
-        initial="initial"
-        >
-          +  
-        </Atom>
-      </Atom>
-      <Atom
-        variant="T"
-        variants={variants}
-        initial="initial"
-        animate={currentNode == "T" ? "pulse" : ""}
-        whileHover={!simulating && "scale"}
-      >
-        T
-      </Atom>
-    </>
+      <text x={s.x} y={s.y + 4} fontSize="12" fill={active ? "#1A202C" : "#E2E8F0"}
+        textAnchor="middle" fontWeight="700">{label}</text>
+    </g>
+  );
+}
+
+const FirstDFA = ({ currentNode, simulatingStatus }) => {
+  const activeState = NODE_TO_STATE[currentNode] || null;
+
+  return (
+    <svg viewBox="0 0 1150 430" width="100%" height="100%" style={{ overflow: "visible" }}>
+      <defs>
+        <marker id="arrow1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L7,3 z" fill="context-stroke" />
+        </marker>
+      </defs>
+
+      {/* ── SELF LOOPS ── */}
+      <SelfLoop state="q26" label="a" />
+      <SelfLoop state="q27" label="b" side="bottom" />
+      <SelfLoop state="q29" label="a" />
+      <SelfLoop state="q11" label="a" />
+      <SelfLoop state="q12" label="b" side="bottom" />
+      <SelfLoop state="q13" label="a,b" side="bottom" />
+      <SelfLoop state="T"   label="a,b" />
+
+      {/* ── LEFT CHAIN: q1→q19→q24→q25 ── */}
+      <Arrow from="q1"  to="q19" label="b" />
+      <Arrow from="q1"  to="T"   label="a" labelDy={-10} bend={-0.15} />
+      <Arrow from="q19" to="q24" label="a,b" />
+      <Arrow from="q24" to="q25" label="b" />
+      <Arrow from="q24" to="T"   label="a" labelDy={-10} bend={-0.1} />
+
+      {/* ── q25 branches to q26(upper) and q27(lower) ── */}
+      <Arrow from="q25" to="q26" label="a" labelDx={-8} labelDy={-6} />
+      <Arrow from="q25" to="q27" label="b" labelDx={-8} labelDy={8} />
+
+      {/* ── q26→q28, q28→q27, q28→q30 ── */}
+      <Arrow from="q26" to="q28" label="b" />
+      <Arrow from="q28" to="q27" label="b" labelDx={8} labelDy={8} />
+      <Arrow from="q28" to="q30" label="a" labelDx={-8} labelDy={-6} />
+
+      {/* ── q27→q29 ── */}
+      <Arrow from="q27" to="q29" label="a" labelDy={10} />
+
+      {/* ── q29↔q30 area ── */}
+      <Arrow from="q29" to="q20" label="b" />
+      <Arrow from="q30" to="q29" label="a" labelDy={10} />
+      <Arrow from="q30" to="q21" label="b" />
+
+      {/* ── q20, q21 ── */}
+      <Arrow from="q20" to="q22" label="a" />
+      <Arrow from="q20" to="T"   label="b" bend={-0.2} labelDy={-8} />
+      <Arrow from="q21" to="q23" label="a" />
+      <Arrow from="q21" to="q4"  label="b" labelDy={10} bend={0.1} />
+
+      {/* ── q22, q23 ── */}
+      <Arrow from="q22" to="q8"  label="a" />
+      <Arrow from="q22" to="q31" label="b" />
+      <Arrow from="q23" to="q8"  label="a" bend={0.15} labelDy={8} />
+      <Arrow from="q23" to="q32" label="b" />
+
+      {/* ── q31, q32 ── */}
+      <Arrow from="q31" to="q2"  label="a" />
+      <Arrow from="q31" to="q4"  label="b" labelDy={10} bend={0.12} />
+      <Arrow from="q32" to="q3"  label="a" />
+      <Arrow from="q32" to="q4"  label="b" labelDy={14} bend={0.15} />
+
+      {/* ── q2, q3 ── */}
+      <Arrow from="q2"  to="q8"  label="a" bend={-0.1} labelDy={-8} />
+      <Arrow from="q2"  to="q9"  label="b" />
+      <Arrow from="q3"  to="q8"  label="a" bend={0.1} labelDy={8} />
+      <Arrow from="q3"  to="q10" label="b" />
+
+      {/* ── q9, q10 ── */}
+      <Arrow from="q9"  to="q16" label="a" labelDx={10} labelDy={10} />
+      <Arrow from="q9"  to="q14" label="b" labelDy={10} bend={0.1} />
+      <Arrow from="q10" to="q17" label="a" />
+      <Arrow from="q10" to="q14" label="b" labelDy={14} bend={0.15} />
+
+      {/* ── q16, q17 ── */}
+      <Arrow from="q16" to="q8"  label="a" labelDx={8} labelDy={-6} />
+      <Arrow from="q16" to="q20" label="b" bend={-0.2} labelDy={-8} />
+      <Arrow from="q17" to="q8"  label="a" labelDx={8} labelDy={6} />
+      <Arrow from="q17" to="q21" label="b" bend={0.2} labelDy={8} />
+
+      {/* ── q8 hub ── */}
+      <Arrow from="q8"  to="q15" label="b" />
+      <Arrow from="q8"  to="T"   label="a" labelDy={13} bend={-0.2} />
+
+      {/* ── q15→q7, q15→T ── */}
+      <Arrow from="q15" to="q7"  label="a" />
+      <Arrow from="q15" to="T"   label="b" bend={-0.2} labelDy={-8} />
+
+      {/* ── q7→q8, q7→q14 ── */}
+      <Arrow from="q7"  to="q8"  label="a" bend={0.2} labelDy={8} />
+      <Arrow from="q7"  to="q14" label="b" />
+
+      {/* ── q14→q18, q14→q4 ── */}
+      <Arrow from="q14" to="q18" label="a" />
+      <Arrow from="q14" to="q4"  label="b" />
+
+      {/* ── q18→T, q18→q7 ── */}
+      <Arrow from="q18" to="T"   label="a" bend={-0.15} labelDy={-8} />
+      <Arrow from="q18" to="q7"  label="b" bend={-0.1} labelDy={-8} />
+
+      {/* ── q4→q11, q4→q12 ── */}
+      <Arrow from="q4"  to="q11" label="a" labelDx={-8} labelDy={-6} />
+      <Arrow from="q4"  to="q12" label="b" labelDy={18} />
+
+      {/* ── q11→q5 ── */}
+      <Arrow from="q11" to="q5"  label="b" />
+
+      {/* ── q5→q13, q5→q12 ── */}
+      <Arrow from="q5"  to="q13" label="a" />
+      <Arrow from="q5"  to="q12" label="b" bend={0.2} labelDy={10} />
+
+      {/* ── q12→q6 ── */}
+      <Arrow from="q12" to="q6"  label="a" />
+
+      {/* ── q6→q11, q6→q13 ── */}
+      <Arrow from="q6"  to="q11" label="a" bend={-0.2} labelDy={-8} />
+      <Arrow from="q6"  to="q13" label="b" />
+
+      {/* STATE NODES tama na pls huhu */}
+      <StateNode stateKey="q1"  active={activeState==="q1"}  label="-" />
+      <StateNode stateKey="q19" active={activeState==="q19"} label="" />
+      <StateNode stateKey="q24" active={activeState==="q24"} label="" />
+      <StateNode stateKey="q25" active={activeState==="q25"} label="" />
+      <StateNode stateKey="q26" active={activeState==="q26"} label="" />
+      <StateNode stateKey="q27" active={activeState==="q27"} label="" />
+      <StateNode stateKey="q28" active={activeState==="q28"} label="" />
+      <StateNode stateKey="q29" active={activeState==="q29"} label="" />
+      <StateNode stateKey="q30" active={activeState==="q30"} label="" />
+      <StateNode stateKey="q20" active={activeState==="q20"} label="" />
+      <StateNode stateKey="q21" active={activeState==="q21"} label="" />
+      <StateNode stateKey="q22" active={activeState==="q22"} label="" />
+      <StateNode stateKey="q23" active={activeState==="q23"} label="" />
+      <StateNode stateKey="q31" active={activeState==="q31"} label="" />
+      <StateNode stateKey="q32" active={activeState==="q32"} label="" />
+      <StateNode stateKey="q2"  active={activeState==="q2"}  label="" />
+      <StateNode stateKey="q3"  active={activeState==="q3"}  label="" />
+      <StateNode stateKey="q9"  active={activeState==="q9"}  label="" />
+      <StateNode stateKey="q10" active={activeState==="q10"} label="" />
+      <StateNode stateKey="q16" active={activeState==="q16"} label="" />
+      <StateNode stateKey="q17" active={activeState==="q17"} label="" />
+      <StateNode stateKey="q8"  active={activeState==="q8"}  label="" />
+      <StateNode stateKey="q15" active={activeState==="q15"} label="" />
+      <StateNode stateKey="q7"  active={activeState==="q7"}  label="" />
+      <StateNode stateKey="q14" active={activeState==="q14"} label="" />
+      <StateNode stateKey="q18" active={activeState==="q18"} label="" />
+      <StateNode stateKey="q4"  active={activeState==="q4"}  label="" />
+      <StateNode stateKey="q11" active={activeState==="q11"} label="" />
+      <StateNode stateKey="q5"  active={activeState==="q5"}  label="" />
+      <StateNode stateKey="q12" active={activeState==="q12"} label="" />
+      <StateNode stateKey="q6"  active={activeState==="q6"}  label="" />
+      <StateNode stateKey="q13" active={activeState==="q13"} label="+" accept />
+      <StateNode stateKey="T"   active={activeState==="T"}   label="T" />
+    </svg>
   );
 };
 

@@ -33,16 +33,25 @@ const CFG = ({ prob2 }) => {
           <PopoverBody align="center">
             {!prob2 ? (
               <VStack>
-                <Text>{"S -> abaX | babX"}</Text>
-                <Text>{"X -> aX | bX | babY"}</Text>
-                <Text>{"Y -> aZ | bZ"}</Text>
-                <Text>{"Z -> aZ | bZ | aaZ | ^"}</Text>
+                <Text>{"S -> A B C D E aba F bb G H G"}</Text>
+                <Text>{"A -> bab | bbb"}</Text>
+                <Text>{"B -> aB | Λ"}</Text>
+                <Text>{"C -> bC | Λ"}</Text>
+                <Text>{"D -> B | C"}</Text>
+                <Text>{"E -> baE | Λ"}</Text>
+                <Text>{"F -> babF | abaF | Λ"}</Text>
+                <Text>{"G -> bab | aba"}</Text>
+                <Text>{"H -> aH | bH | Λ"}</Text>
               </VStack>
             ) : (
-              <VStack>
-                <Text>{"S -> 1X | 0X"}</Text>
-                <Text>{"X -> 1X | 0X | 111Y | 000Y | 101Y"}</Text>
-                <Text>{"Y -> 1Y | 0X | ^"}</Text>
+              <VStack> 
+                <Text>{"S -> A B C D E F"}</Text>
+                <Text>{"A -> 1A | 0A | Λ"}</Text>
+                <Text>{"B -> 1B | Λ"}</Text>
+                <Text>{"C - 0C | Λ"}</Text>
+                <Text>{"D -> 101A | 01A | 000A"}</Text>
+                <Text>{"E -> 101E | 00E | Λ"}</Text>
+                <Text>{"F -> 111A | 00A | 101A"}</Text>
               </VStack>
             )}
           </PopoverBody>

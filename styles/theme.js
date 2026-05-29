@@ -6,9 +6,9 @@ import '@fontsource/roboto';
 
 export const theme = extendTheme({
   styles: {
-    global: (props) => ({
+    global: {
       body: {
-        bg: props.colorMode === "dark" ? "gray.800" : "gray.50",
+        bg: "#212124"
       },
       p: {
         color: "white.700",
@@ -16,15 +16,15 @@ export const theme = extendTheme({
       "h1, h2, h3, h4": {
         color: "white.700",
       },
-    }),
+    },
   },
   config: {
     initialColorMode: "dark",
     useSystemColorMode: false,
   },
   fonts:{
-    body:`'Roboto', sans-serif`,
-    heading:`'Roboto', sans-serif`,
+    body:`'Arial', sans-serif`,
+    heading:`'Calibri', sans-serif`,
   },
   textStyles: {
     Primary: {

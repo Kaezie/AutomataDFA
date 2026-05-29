@@ -159,6 +159,75 @@ export const Badge = {
 
       borderColor: "green.300",
     },
+
+    // ── Problem 2 states ──
+    // q1(start): left side
+    q1_2: {
+      top: "50%",
+      left: "5%",
+      borderColor: "green.300",
+    },
+    // q2
+    q2_2: {
+      top: "50%",
+      left: "22%",
+      borderColor: "blue.300",
+    },
+    // q3 (below q2)
+    q3_2: {
+      top: "75%",
+      left: "32%",
+      borderColor: "blue.300",
+    },
+    // q4
+    q4_2: {
+      top: "50%",
+      left: "40%",
+      borderColor: "blue.300",
+    },
+    // q5 (upper branch)
+    q5_2: {
+      top: "20%",
+      left: "55%",
+      borderColor: "blue.300",
+    },
+    // q6 (lower branch)
+    q6_2: {
+      top: "80%",
+      left: "55%",
+      borderColor: "blue.300",
+    },
+    // q8 (upper-right)
+    q8_2: {
+      top: "30%",
+      left: "72%",
+      borderColor: "blue.300",
+    },
+    // q9 (lower-right)
+    q9_2: {
+      top: "70%",
+      left: "72%",
+      borderColor: "blue.300",
+    },
+    // q7 accept state
+    q7_2: {
+      top: "50%",
+      left: "88%",
+      borderColor: "green.300",
+    },
+    q7_2inner: {
+      top: "50%",
+      left: "50%",
+      h: "2.25em",
+      w: "2.25em",
+      borderColor: "green.300",
+    },
+    // Trap state for problem 2
+    T_2: {
+      top: "5%",
+      left: "60%",
+      borderColor: "red.300",
+    },
   },
   defaultProps: {
     size: "node",
